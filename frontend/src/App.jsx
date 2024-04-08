@@ -1,16 +1,20 @@
-
-import './App.css'
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/homepage.jsx";
+import Signin from "./pages/signin.jsx";
+import Signup from "./pages/signup.jsx";
+import "./index.css";
 
 function App() {
-
   return (
-    <>
-      <h1 className='bg-black text-white'>Hello this is shabda. someone else is here too.</h1>
-      <h1 className='bg-black text-white font-bold'>Hello this is shabda. Now it is aashish.</h1>
-      <h1 className='bg-red-500 text-white font-bold'>Hello this is shabda. Now it is aashish.</h1>
-      <h1 className='bg-blue-400 text-white font-bold'>Hello this is shabda. Now it is aashish.</h1>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
 }
- 
-export default App
+
+export default App;
