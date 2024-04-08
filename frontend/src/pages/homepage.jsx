@@ -2,7 +2,7 @@ import React from 'react'
 
 const Homepage = () => {
   return (
-    <div>homepage</div>
+    <div>Welcome to Innfolio. Do you want to login or signup?</div>
   )
 }
 

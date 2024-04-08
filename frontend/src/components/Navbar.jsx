@@ -2,7 +2,7 @@
 
 const Navbar = () => {
   return (
-    <div className="w-full">Navbar</div>
+    <div className="w-full gradient-two">Navbar</div>
   )
 }
 

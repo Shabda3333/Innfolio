@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar";
 const Signup = () => {
   return (
     <div>
-      <MainLayout><Navbar></Navbar></MainLayout>
+      <Navbar />
+      <MainLayout></MainLayout>
     </div>
   );
 };
