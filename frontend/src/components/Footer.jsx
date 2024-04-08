@@ -6,8 +6,8 @@ import UploadButton from "./UploadButton";
 const Footer = () => {
   return (
     <div className="bg-dark-grey w-full rounded-2xl border-[1px] border-[#8F8F8F] relative overflow-hidden">
-      <div className="w-[62rem] h-[62rem] rotate-[78deg] absolute top-[-700px] left-[-600px] bg-white rounded-full gradient-one z-10 blur-[150px]"></div>
-      <div className="w-[62rem] h-[62rem] rotate-[78deg] absolute bottom-[-700px] right-[-700px] bg-white rounded-full gradient-one z-10 blur-[150px]"></div>
+      <div className="w-[62rem] h-[62rem] rotate-[78deg] absolute top-[-800px] left-[-600px] bg-white rounded-full gradient-one z-10 blur-[150px]"></div>
+      <div className="w-[62rem] h-[62rem] rotate-[78deg] absolute bottom-[-800px] right-[-700px] bg-white rounded-full gradient-one z-10 blur-[150px]"></div>
       <div className="flex-wrapper flex justify-center items-center z-20">
         <div className="content-container w-[34rem] py-10 flex flex-col justify-center items-center gap-12">
           <img src={InnfolioLogo} alt="logo" />

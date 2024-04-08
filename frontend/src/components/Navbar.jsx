@@ -1,7 +1,6 @@
 // import React from 'react'
 import { Link } from "react-router-dom";
 import InnfolioLogo from "../assets/innfolio.svg";
-// import UploadIcon from "../assets/upload.svg";
 import UploadButton from "./UploadButton";
 import TestImage from "../assets/test_image.jpg"
 
