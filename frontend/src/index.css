@@ -19,7 +19,7 @@
   backdrop-filter: blur(15px);
 }
 
-.upload-project-text-shadow{
+.text-shadow-one{
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.40);;
 }
 

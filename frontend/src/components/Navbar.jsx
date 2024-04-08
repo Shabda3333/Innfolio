@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="w-full navbar-bg py-8 px-[7.5rem] flex justify-between">
       <img src={InnfolioLogo} alt="logo" />
       <div className="right flex justify-between items-center gap-[3.25rem]">
-        <div className="links flex items-center gap-[3.25rem] text-sm">
+        <div className="links flex items-center gap-[3.25rem] text-base">
           <Link to="/" className="text-white font-medium">
             Explore
           </Link>
