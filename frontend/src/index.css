@@ -10,35 +10,6 @@
     background-image: linear-gradient(99deg, #28B1A1 20.89%, #053987 70.77%);
   }
 
-/* @font-face {
-    font-family: 'General Sans';
-    font-weight: regular;
-    src: url('./assets/fonts/GeneralSans-Regular.otf');
-}
-
-@font-face {
-    font-family: 'General Sans';
-    font-weight: bold;
-    src: url('./assets/fonts/GeneralSans-Bold.otf');
-}
-
-@font-face {
-    font-family: 'General Sans';
-    font-weight: semibold;
-    src: url('./assets/fonts/GeneralSans-Semibold.otf');
-}
-
-@font-face {
-    font-family: 'General Sans';
-    font-weight: medium;
-    src: url('./assets/fonts/GeneralSans-Medium.otf');
-}
-
-@font-face {
-    font-family: 'General Sans';
-    font-weight: light;
-    src: url('./assets/fonts/GeneralSans-Light.otf');
-} */
 
 body{
     font-family: 'General Sans';
