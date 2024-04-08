@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 const Signup = () => {
   return (
-    <div>
+    <div className="bg-black">
       <Navbar />
       <MainLayout></MainLayout>
     </div>
