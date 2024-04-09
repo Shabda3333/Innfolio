@@ -17,9 +17,9 @@ const Homepage = () => {
             <h3 className="text-white text-7xl font-semibold text-center">Unlock Your Professional Brilliance</h3>
             <p className="text-cyan text-4xl font-medium">Craft <span className="text-white font-regular">Portfolio of Excellence</span></p>
           </div>
-          <div className="call-to-actions w-full flex justify-center items-center gap-8">
+          <div className="call-to-actions w-1/2 flex justify-between items-center">
             <Link to = "/signin">
-              <LoginSignupButton title = "Sign In"/>
+              <LoginSignupButton title = "Sign In" />
             </Link>
             <Link to = "/signup">
               <LoginSignupButton title = "Sign Up"/>
