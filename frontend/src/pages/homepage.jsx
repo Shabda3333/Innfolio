@@ -1,5 +1,7 @@
-import React from "react";
+
+// import React from "react";
 import MainLayout from "../layouts/mainLayout";
+
 
 const Homepage = () => {
   return (
