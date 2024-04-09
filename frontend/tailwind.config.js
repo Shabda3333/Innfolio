@@ -12,7 +12,7 @@ export default {
       blue: "#134B9E",
     },
     fontFamily: {
-      "general-sans": ["GeneralSans", "sans-sarif"],
+      "general-sans": ["GeneralSans", "sans-serif"],
     },
   },
   plugins: [],

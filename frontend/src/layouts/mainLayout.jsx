@@ -1,9 +1,9 @@
 // import React from 'react'
 
-const mainLayout = ({children}) => {
+const MainLayout = ({children}) => {
   return (
-    <div className='mx-[120px]'>{children}</div>
+    <div className='px-[120px] py-[40px] bg-[url("./src/assets/welcomepagebg.svg")] h-[100vh] bg-cover bg-center  '>{children}</div>
   )
 }
 
-export default mainLayout
+export default MainLayout

@@ -6,7 +6,9 @@ const Signup = () => {
   return (
     <div>
       <Navbar />
-      <MainLayout></MainLayout>
+      <MainLayout>
+        
+      </MainLayout>
     </div>
   );
 };
