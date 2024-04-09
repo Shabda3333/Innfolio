@@ -34,7 +34,7 @@
 }
 
 .text-gradient-one {
-  background: linear-gradient(91deg, #48CA94 6.77%, #025CDA 97.57%);
+  background: linear-gradient(145deg, #7CE881 21.91%, #016BFF 87.65%);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -58,6 +58,7 @@
 
 body {
   font-family: "General Sans";
+  overflow-x: hidden;
 }
 
 @layer components {
