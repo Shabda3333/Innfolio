@@ -6,7 +6,7 @@ import TestImage from "../assets/test_image.jpg"
 
 const Navbar = () => {
   return (
-    <div className="w-full navbar-bg py-8 px-[7.5rem] flex justify-between">
+    <div className="w-full navbar-bg py-8 px-[7.5rem] background-blur-one flex justify-between fixed top-0 z-30">
       <img src={InnfolioLogo} alt="logo" />
       <div className="right flex justify-between items-center gap-[3.25rem]">
         <div className="links flex items-center gap-[3.25rem] text-base">

@@ -2,7 +2,7 @@
 
 const mainLayout = ({children}) => {
   return (
-    <div className='mx-[120px]'>{children}</div>
+    <div className='mx-[7.5rem] z-20 pt-[10rem] pb-[5rem]'>{children}</div>
   )
 }
 
