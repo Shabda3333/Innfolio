@@ -68,7 +68,7 @@ const Signup = () => {
               </div>
             </div>
             <div className="call-to-actions flex flex-col gap-4">
-              <LoginSignupButton title="Sign Up" />
+              <LoginSignupButton title="Sign Up" /> {/*wrap this in <Link> tag to route to setup page*/}
               <p className="text-white font-regular">
                 Already have an account?
                 <Link to="/signin">
