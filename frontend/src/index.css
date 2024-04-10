@@ -34,7 +34,7 @@
 }
 
 .text-gradient-one {
-  background: linear-gradient(145deg, #7CE881 21.91%, #016BFF 87.65%);
+  background: linear-gradient(145deg, #7ce881 21.91%, #016bff 87.65%);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -46,6 +46,14 @@
 .background-blur-one {
   background-color: rgba(31, 31, 31, 0.1);
   backdrop-filter: blur(15px);
+}
+
+.form-background {
+  background: linear-gradient(
+    193deg,
+    rgba(123, 123, 123, 0.2) 3.61%,
+    rgba(70, 70, 70, 0.2) 92.33%
+  );
 }
 
 .position-center {
