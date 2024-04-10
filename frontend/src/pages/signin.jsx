@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import SecondLayout from "../layouts/secondLayout.jsx";
 import LoginSignupButton from "../components/LoginSignupButton.jsx";
-import SignInIllustration from "../assets/illustrations/sign_in_illustration.svg"
+import SignInIllustration from "../assets/illustrations/sign_in_illustration.svg";
 
 const Signup = () => {
   return (
@@ -14,7 +14,9 @@ const Signup = () => {
           </div>
           <div className="form w-[38rem] flex flex-col gap-8 form-background border-[1px] border-dark-grey px-20 py-24 rounded-[1.875rem]">
             <div className="heading flex flex-col gap-2">
-              <h3 className="text-white text-4xl font-semibold">Welcome Back!</h3>
+              <h3 className="text-white text-4xl font-semibold">
+                Welcome Back!
+              </h3>
               <p className="text-white text-lg">
                 Log in and continue access to your account.
               </p>
@@ -44,11 +46,11 @@ const Signup = () => {
               </div>
             </div>
             <div className="call-to-actions flex flex-col gap-4">
-              <LoginSignupButton title="Log In" className="!w-full" />
+              <LoginSignupButton title="Sign In"/>
               <p className="text-white font-regular">
-                Don't have an account?{" "}
+                Don't have an account?
                 <Link to="/signup">
-                  <span className="text-cyan font-medium">Sign Up</span>
+                  <span className="text-cyan font-medium"> Sign Up</span>
                 </Link>
               </p>
             </div>
