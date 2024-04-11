@@ -10,10 +10,10 @@ const Navbar = () => {
       <img src={InnfolioLogo} alt="logo" />
       <div className="right flex justify-between items-center gap-[3.25rem]">
         <div className="links flex items-center gap-[3.25rem] text-base">
-          <Link to="/" className="text-white font-medium">
+          <Link to="/explore" className="text-white font-medium">
             Explore
           </Link>
-          <Link to="/" className="text-cyan font-semibold">
+          <Link to="/profile" className="text-cyan font-semibold">
             Profile
           </Link>
           <Link to="/" className="text-white font-medium">

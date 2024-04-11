@@ -2,7 +2,7 @@ data = [[
     skill = {
         'title': 'JS'
     },{
-        'title': 'Ract'
+        'title': 'React'
     },{
         'title': 'JS'
     },{

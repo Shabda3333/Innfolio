@@ -4,6 +4,7 @@ import Homepage from "./pages/homepage.jsx";
 import Signin from "./pages/signin.jsx";
 import Signup from "./pages/signup.jsx";
 import Profile from "./pages/profile.jsx";
+import Explore from "./pages/explore.jsx";
 import SetupAccount from "./pages/Account Setup/setup-account.jsx";
 import ProfessionalRole from "./pages/Account Setup/professional-role.jsx";
 import "./index.css";
@@ -16,6 +17,7 @@ function App() {
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="explore" element={<Explore />} />
         <Route path="setup-account/*" element={<SetupAccount />}>
           <Route
             path="professional-role"
