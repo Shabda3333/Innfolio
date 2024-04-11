@@ -74,6 +74,7 @@ const Signup = () => {
               </p>
             </div>
             <form className="input-fields flex flex-col gap-6" onSubmit={handleSubmit}>
+            <form className="input-fields flex flex-col gap-6">
               <div className="email flex flex-col gap-2">
                 <label htmlFor="email" className="text-lg text-white">
                   Email

@@ -1,5 +1,5 @@
 // import React from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import Homepage from "./pages/homepage.jsx";
 import Signin from "./pages/signin.jsx";
 import Signup from "./pages/signup.jsx";
@@ -7,6 +7,8 @@ import Profile from "./pages/profile.jsx";
 import Explore from "./pages/explore.jsx";
 import SetupAccount from "./pages/Account Setup/setup-account.jsx";
 import ProfessionalRole from "./pages/Account Setup/professional-role.jsx";
+import Skills from "./pages/Account Setup/skills.jsx";
+import About from "./pages/Account Setup/about.jsx";
 import "./index.css";
 
 function App() {
@@ -18,13 +20,14 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
         <Route path="explore" element={<Explore />} />
-        <Route path="setup-account/*" element={<SetupAccount />}>
+        <Route path="setup-account" element={<><Outlet /></>}>
+          <Route index element = {<SetupAccount/>}/>
           <Route
             path="professional-role"
             element={<ProfessionalRole/>}
           />
-          <Route path="about" />
-          <Route path="skills" />
+          <Route path="about" element={<About/>}/>
+          <Route path="skills" element={<Skills/>}/>
         </Route>
       </Routes>
     </Router>
