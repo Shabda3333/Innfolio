@@ -1,11 +1,10 @@
 // import React from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SecondLayout from "../../layouts/secondLayout.jsx";
 import LoginSignupButton from "../../components/LoginSignupButton.jsx";
 import SetupAccountIllustration from "../../assets/illustrations/setup_account_illustration.svg";
 
 const Signup = () => {
-  // const navigate = useNavigate();
   return (
     <div>
       <SecondLayout>

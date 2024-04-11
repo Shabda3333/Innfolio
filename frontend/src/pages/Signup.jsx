@@ -21,7 +21,7 @@ const Signup = () => {
                 Join us now to start crafting and exploring portfolios.
               </p>
             </div>
-            <div className="input-fields flex flex-col gap-3">
+            <form className="input-fields flex flex-col gap-3">
               <div className="fname flex flex-col gap-2">
                 <label htmlFor="fname" className="text-lg text-white">
                   Full Name
@@ -66,7 +66,7 @@ const Signup = () => {
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
               </div>
-            </div>
+            </form>
             <div className="call-to-actions flex flex-col gap-4">
               <LoginSignupButton title="Sign Up" /> {/*wrap this in <Link> tag to route to setup page*/}
               <p className="text-white font-regular">

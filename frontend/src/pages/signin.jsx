@@ -21,7 +21,7 @@ const Signup = () => {
                 Log in and continue access to your account.
               </p>
             </div>
-            <div className="input-fields flex flex-col gap-6">
+            <form className="input-fields flex flex-col gap-6">
               <div className="email flex flex-col gap-2">
                 <label htmlFor="email" className="text-lg text-white">
                   Email
@@ -44,7 +44,7 @@ const Signup = () => {
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
               </div>
-            </div>
+            </form>
             <div className="call-to-actions flex flex-col gap-4">
               <LoginSignupButton title="Sign In"/>
               <p className="text-white font-regular">
