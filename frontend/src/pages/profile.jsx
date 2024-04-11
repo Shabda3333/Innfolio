@@ -74,7 +74,7 @@ const profile = () => {
             My <span className="text-gradient-one">Skills</span>
           </h3>
           <div className="skills flex gap-8">
-            <SkillChip name="HTML" />
+            <SkillChip name="HTM" />
             <SkillChip name="CSS" />
             <SkillChip name="Tailwind" />
             <SkillChip name="JavaScript" />
