@@ -20,14 +20,14 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
         <Route path="explore" element={<Explore />} />
-        <Route path="setup-account" element={<><Outlet /></>}>
+        <Route path="account-setup" element={<><Outlet /></>}>
           <Route index element = {<SetupAccount/>}/>
           <Route
-            path="professional-role"
+            path="user-professional-role"
             element={<ProfessionalRole/>}
           />
-          <Route path="about" element={<About/>}/>
-          <Route path="skills" element={<Skills/>}/>
+          <Route path="user-about" element={<About/>}/>
+          <Route path="usre-skills" element={<Skills/>}/> 
         </Route>
       </Routes>
     </Router>

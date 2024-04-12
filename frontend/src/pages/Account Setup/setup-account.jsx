@@ -4,7 +4,7 @@ import SecondLayout from "../../layouts/secondLayout.jsx";
 import LoginSignupButton from "../../components/LoginSignupButton.jsx";
 import SetupAccountIllustration from "../../assets/illustrations/setup_account_illustration.svg";
 
-const Signup = () => {
+const account_setup = () => {
   return (
     <div>
       <SecondLayout>
@@ -32,4 +32,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default account_setup;
