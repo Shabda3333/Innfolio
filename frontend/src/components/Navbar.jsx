@@ -1,10 +1,17 @@
 // import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InnfolioLogo from "../assets/innfolio.svg";
 import UploadButton from "./UploadButton";
 import TestImage from "../assets/test_image.jpg"
+import { useCookies } from "react-cookie";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+  const Logout = () => {
+    removeCookie("token");
+    navigate("/");
+  };
   return (
     <div className="w-full navbar-bg py-8 px-[7.5rem] background-blur-one flex justify-between fixed top-0 z-30">
       <img src={InnfolioLogo} alt="logo" />
@@ -27,6 +34,11 @@ const Navbar = () => {
         <div className="profile-picture w-12 h-12 bg-white rounded-full overflow-hidden">
             <img src={TestImage} alt="test image" />
         </div>
+        <button className=" text-white ">
+          <span onClick={Logout} className="material-symbols-outlined text-3xl">
+            logout
+          </span>
+        </button>
       </div>
     </div>
   );

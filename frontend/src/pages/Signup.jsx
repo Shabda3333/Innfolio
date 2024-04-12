@@ -1,10 +1,69 @@
-// import React from 'react'
-import { Link } from "react-router-dom";
+import React, {useState} from 'react'
+import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import SecondLayout from "../layouts/secondLayout.jsx";
 import LoginSignupButton from "../components/LoginSignupButton.jsx";
 import SignUpIllustration from "../assets/illustrations/sign_up_illustration.svg";
+import { useUserContext } from '../context/UserContext.jsx';
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const {user, setUser}=useUserContext();
+  const [inputValue, setInputValue] = useState({
+    email: "",
+    password: "",
+    username: "",
+  });
+  const { email, password, username } = inputValue;
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-right",
+    });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3333/api/auth/signup",
+        {
+          ...inputValue,
+        },
+        { withCredentials: true }
+      );
+      const { success, message, user } = data;
+      if (success) {
+        handleSuccess(message);
+        
+        setUser(user);
+        setTimeout(() => {
+          navigate("/account-setup");
+        }, 1000);
+      } else {
+        handleError(message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setInputValue({
+      ...inputValue,
+      email: "",
+      password: "",
+      username: "",
+    });
+  };
   return (
     <div>
       <SecondLayout>
@@ -21,7 +80,7 @@ const Signup = () => {
                 Join us now to start crafting and exploring portfolios.
               </p>
             </div>
-            <form className="input-fields flex flex-col gap-3">
+            <form className="input-fields flex flex-col gap-3" onSubmit={handleSubmit}>
               <div className="fname flex flex-col gap-2">
                 <label htmlFor="fname" className="text-lg text-white">
                   Full Name
@@ -29,6 +88,9 @@ const Signup = () => {
                 <input
                   type="text"
                   id="fname"
+                  name="username"
+                  value={username}
+                  onChange={handleOnChange}
                   placeholder="Enter your Full Name"
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
@@ -40,6 +102,9 @@ const Signup = () => {
                 <input
                   type="text"
                   id="email"
+                  name="email"
+                  value={email}
+                  onChange={handleOnChange}
                   placeholder="Enter your Email"
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
@@ -51,11 +116,14 @@ const Signup = () => {
                 <input
                   type="password"
                   id="password"
+                  name="password"
+                  value={password}
+                  onChange={handleOnChange}
                   placeholder="Enter your Password"
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
               </div>
-              <div className="confirm-password flex flex-col gap-2">
+              {/* <div className="confirm-password flex flex-col gap-2">
                 <label htmlFor="confirmPassword" className="text-lg text-white">
                   Confirm Password
                 </label>
@@ -65,10 +133,13 @@ const Signup = () => {
                   placeholder="Enter your Password"
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
-              </div>
+              </div> */}
+              <button type="submit">
+                <LoginSignupButton title="Sign Up" /> 
+              </button>
             </form>
             <div className="call-to-actions flex flex-col gap-4">
-              <LoginSignupButton title="Sign Up" /> {/*wrap this in <Link> tag to route to setup page*/}
+              {/*wrap this in <Link> tag to route to setup page*/}
               <p className="text-white font-regular">
                 Already have an account?
                 <Link to="/signin">
@@ -78,7 +149,9 @@ const Signup = () => {
             </div>
           </div>
         </div>
+        
       </SecondLayout>
+      <ToastContainer/>
     </div>
   );
 };

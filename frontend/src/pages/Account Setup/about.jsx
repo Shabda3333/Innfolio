@@ -1,8 +1,46 @@
 // import React from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useUserContext } from "../../context/UserContext.jsx";
 import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 
 const user_about = () => {
+  const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
+
+  const [inputValue, setInputValue] = useState({
+    about: "",
+  });
+  console.log(user);
+  const { about } = inputValue;
+
+  const handleOnSubmit = (e) => {
+    try {
+
+    e.preventDefault();
+    var testObject = { ...user };
+    testObject.about = inputValue.about;
+
+    setUser(testObject);
+    console.log("User has been set");
+    console.log(user);
+
+    navigate("/account-setup/user-skills");
+    
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+    console.log(inputValue);
+  };
   return (
     <div>
       <SecondLayout>
@@ -12,10 +50,10 @@ const user_about = () => {
               <h3 className="text-white text-4xl font-semibold">
                 Account Setup
               </h3>
-              <form action="">
+              <form action="" onSubmit={handleOnSubmit}>
                 <div className="professional-role flex flex-col gap-4">
                   <label
-                    htmlFor="professional-role"
+                    htmlFor="about"
                     className="text-lg text-white"
                   >
                     Write Something About Yourself
@@ -23,16 +61,19 @@ const user_about = () => {
                   <textarea
                     rows={6}
                     type="text"
-                    id="professional-role"
+                    id="about"
+                    name="about"
+                    value={about}
+                    onChange={handleOnChange}
                     placeholder="eg: Hi, I am ......"
                     className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-2xl"
                   />
                 </div>
+                <button type="submit" className="w-3/12">
+                  <ContinueButton title="Continue" />
+                </button>
               </form>
             </div>
-            <button className="w-3/12">
-              <ContinueButton title="Continue" />
-            </button>
           </div>
         </div>
       </SecondLayout>

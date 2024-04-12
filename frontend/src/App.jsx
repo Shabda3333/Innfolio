@@ -27,7 +27,7 @@ function App() {
             element={<ProfessionalRole/>}
           />
           <Route path="user-about" element={<About/>}/>
-          <Route path="usre-skills" element={<Skills/>}/> 
+          <Route path="user-skills" element={<Skills/>}/> 
         </Route>
       </Routes>
     </Router>
