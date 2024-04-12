@@ -1,15 +1,18 @@
 // import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import { useUserContext } from '../../context/UserContext.jsx';
 import SecondLayout from "../../layouts/secondLayout.jsx";
 import LoginSignupButton from "../../components/LoginSignupButton.jsx";
 import SetupAccountIllustration from "../../assets/illustrations/setup_account_illustration.svg";
 
 const account_setup = () => {
+  const{user}=useUserContext();
+  console.log(user);
   return (
     <div>
       <SecondLayout>
         <div className="wrapper position-center flex flex-col justify-center items-center gap-8">
-          <img
+          <img className=" w-72"
             src={SetupAccountIllustration}
             alt="Setup Account Illustration"
           />
@@ -22,7 +25,7 @@ const account_setup = () => {
             </p>
           </div>
           <div className="cta-wrapper w-1/2">
-            <Link to="professional-role">
+            <Link to="user-professional-role" >
               <LoginSignupButton title="Continue" />
             </Link>
           </div>
@@ -31,5 +34,4 @@ const account_setup = () => {
     </div>
   );
 };
-
 export default account_setup;

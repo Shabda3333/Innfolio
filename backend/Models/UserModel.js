@@ -15,15 +15,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Your password is required"],
   },
-  createdAt: {
-    type: Date,
-    default: new Date(),
+  
+  about: {
+    type: String,
+    default: "",
   },
   picture: {
     type: String,
+    default: "",
   },
   role: {
     type: String,
+    default: "",
    
   },
   skills: {

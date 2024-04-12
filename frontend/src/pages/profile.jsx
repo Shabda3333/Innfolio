@@ -11,8 +11,12 @@ import FacebookLogo from "../assets/icons/facebook.svg";
 import InstagramLogo from "../assets/icons/instagram.svg";
 import GithubLogo from "../assets/icons/github.svg";
 import TestImage from "../assets/test_image.jpg";
+import { useUserContext } from "../context/UserContext.jsx";
+
 
 const profile = () => {
+    const {user}= useUserContext()
+    console.log(user.username)
   return (
     <div className="bg-black">
       <div className="background-gradients z-10">
@@ -29,23 +33,14 @@ const profile = () => {
                 Hello,
               </p>
               <p className="text-white text-[4.5rem] text-shadow-one font-semibold">
-                I'm <span className="text-gradient-one">Swikriti Suwal</span>
+                I'm <span className="text-gradient-one">{user.username}</span>
               </p>
               <p className="text-white text-[2.5rem] text-shadow-one font-medium">
-                Fontend Developer
+                {user.role}
               </p>
             </div>
             <p className="description text-white text-lg font-regular">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              {user.about}
             </p>
             <div className="socials flex items-center gap-8">
               <Link to="/">
@@ -74,11 +69,11 @@ const profile = () => {
             My <span className="text-gradient-one">Skills</span>
           </h3>
           <div className="skills flex gap-8">
-            <SkillChip name="HTM" />
-            <SkillChip name="CSS" />
-            <SkillChip name="Tailwind" />
-            <SkillChip name="JavaScript" />
+            {user.skills.map((skill, index) => (
+              <SkillChip key={index} name={skill} />
+            ))}
           </div>
+
         </div>
         <div className="work-experience flex flex-col gap-4 mb-14">
           <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">

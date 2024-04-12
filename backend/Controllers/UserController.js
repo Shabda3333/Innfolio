@@ -80,6 +80,9 @@ const updateUser = async (req, res) => {
     if (req.body.role != null) {
       user.role = req.body.role;
     }
+    if (req.body.about != null) {
+      user.about = req.body.about;
+    }
     if (req.body.skills != null) {
       user.skills = req.body.skills;
     }

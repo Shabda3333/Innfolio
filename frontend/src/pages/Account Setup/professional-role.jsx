@@ -1,8 +1,45 @@
 // import React from 'react'
 import SecondLayout from "../../layouts/secondLayout";
+import { useUserContext } from "../../context/UserContext.jsx";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 
 const user_professional_role = () => {
+  const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
+
+  const [inputValue, setInputValue] = useState({
+    role: "",
+  });
+  console.log(user);
+  const { role } = inputValue;
+
+  const handleOnSubmit = (e) => {
+    try {
+
+    e.preventDefault();
+    var testObject = { ...user };
+    testObject.role = inputValue.role;
+
+    setUser(testObject);
+    console.log("User has been set");
+    console.log(user);
+
+    navigate("/account-setup/user-about");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+    console.log(inputValue);
+  };
   return (
     <div>
       <SecondLayout>
@@ -12,7 +49,7 @@ const user_professional_role = () => {
               <h3 className="text-white text-4xl font-semibold">
                 Account Setup
               </h3>
-              <form action="">
+              <form action="" onSubmit={handleOnSubmit}>
                 <div className="professional-role flex flex-col gap-4">
                   <label
                     htmlFor="professional-role"
@@ -23,15 +60,18 @@ const user_professional_role = () => {
                   <input
                     type="text"
                     id="professional-role"
+                    name="role"
+                    value={role}
+                    onChange={handleOnChange}
                     placeholder="eg: UI Designer"
                     className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                   />
                 </div>
+                <button type="submit" className="w-3/12">
+                  <ContinueButton title="Continue" />
+                </button>
               </form>
             </div>
-            <button className="w-3/12">
-              <ContinueButton title="Continue" />
-            </button>
           </div>
         </div>
       </SecondLayout>
