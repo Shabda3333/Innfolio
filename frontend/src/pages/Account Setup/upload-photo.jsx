@@ -1,6 +1,7 @@
 // import React from 'react'
 import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
+import UploadPhotoIcon from "../../assets/upload_photo.svg";
 
 const professional_role = () => {
   return (
@@ -13,23 +14,17 @@ const professional_role = () => {
                 Account Setup
               </h3>
               <form action="">
-                <div className="about flex flex-col gap-4">
-                  <div className="flex w-full justify-between">
-                    <label
-                      htmlFor="about"
-                      className="text-lg text-white"
-                    >
-                      Write Something About Yourself
-                    </label>
-                    <p className="text-cyan text-lg font-medium">0/80</p>
-                  </div>
-                  <textarea
-                    type="text"
-                    id="about"
-                    placeholder="eg: figma, vector art, illustrations"
-                    rows = "8"
-                    className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-xl"
-                  />
+                <div className="upload-photo flex flex-col gap-4">
+                  <label htmlFor="upload-photo" className="text-lg text-white">
+                    Upload Your Photo
+                  </label>
+                  <button>
+                      <div className="upload-photo-area h-[12rem] dashed-border flex justify-center items-center">
+                        <div className="icon-container w-14 h-14 bg-white flex justify-center items-center rounded-full">
+                          <img src={UploadPhotoIcon} alt="upload photo icon" />
+                        </div>
+                      </div>
+                  </button>
                 </div>
               </form>
             </div>

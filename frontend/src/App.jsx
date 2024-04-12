@@ -8,6 +8,7 @@ import SetupAccount from "./pages/Account Setup/setup-account.jsx";
 import ProfessionalRole from "./pages/Account Setup/professional-role.jsx";
 import Skills from "./pages/Account Setup/skills.jsx";
 import About from "./pages/Account Setup/about.jsx";
+import UploadPhoto from "./pages/Account Setup/upload-photo.jsx";
 import "./index.css";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           />
           <Route path="about" element={<About/>}/>
           <Route path="skills" element={<Skills/>}/>
+          <Route path="upload-photo" element={<UploadPhoto/>}/>
         </Route>
       </Routes>
     </Router>

@@ -39,9 +39,12 @@
   color: transparent;
 }
 
-/* .text-shadow-one {
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
-} */
+.dashed-border {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='17' ry='17' stroke='%2331C8B6' stroke-width='6' stroke-dasharray='4%2c 14' stroke-dashoffset='25' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 17px;
+}
+
+/* %2331C8B6 */
 
 .background-blur-one {
   background-color: rgba(31, 31, 31, 0.1);
