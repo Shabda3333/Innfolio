@@ -1,5 +1,5 @@
 // import React from "react";
-import UploadIcon from '../assets/upload.svg'
+import UploadIcon from '../assets/upload_project.svg'
 
 const UploadButton = () => {
   return (
