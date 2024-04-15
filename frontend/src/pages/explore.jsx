@@ -14,52 +14,7 @@ import SearchBar from "../components/SearchBar.jsx";
 
 const Explore = () => {
 
-  const { user, setUser } = useUserContext();
-  console.log(user);
-
-  const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
-  const [username, setUsername] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const verifyCookie = async () => {
-      // if (!cookies.token) {
-      //   navigate("/login");
-      //   console.log("No cookies")
-      //   return;
-      // }
-
-      try {
-        const { data } = await axios.post(
-          "http://localhost:3333/api/auth/",
-          {},
-          { withCredentials: true }
-        );
-        const { status, user } = data;
-        if (status) {
-          setUsername(user);
-          toast(`Hello ${user}`, {
-            position: "bottom-left",
-          });
-        } else {
-          removeCookie("token");
-          navigate("/");
-        }
-      } catch (error) {
-        removeCookie("token");
-        navigate("/");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    verifyCookie();
-  }, [cookies, navigate, removeCookie]);
-
-  if (loading) {
-    return null; // or a loading spinner
-  }
+  
   return (
     <div className="bg-black">
       <div className="background-gradients z-10">

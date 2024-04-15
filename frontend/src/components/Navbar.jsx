@@ -2,57 +2,22 @@
 import { Link, isRouteErrorResponse, useNavigate } from "react-router-dom";
 import InnfolioLogo from "../assets/innfolio.svg";
 import UploadButton from "./UploadButton";
-import TestImage from "../assets/test_image.jpg"
+import TestImage from "../assets/test_image.jpg";
 import { useCookies } from "react-cookie";
 import { useUserContext } from "../context/UserContext.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext.jsx";
 
 const Navbar = () => {
-const {setUser} = useUserContext();
-
-useEffect(() => {
-  const verifyCookie = async () => {
-    // if (!cookies.token) {
-    //   navigate("/login");
-    //   console.log("No cookies")
-    //   return;
-    // }
-
-    try {
-      const { data } = await axios.post(
-        "http://localhost:4000/api/user/",
-        {},
-        { withCredentials: true }
-      );
-      const { status, user,userid } = data;
-      if (status) {
-        fetch(`http://localhost:3333/api/user/${userid}`)
-          .then((response) => response.json())
-          .then((data)=> setUser(data))
-          .catch((error)=> console.error("Erorr fetching user data: ",error));
-      } else {
-        removeCookie("token");
-        navigate("/login");
-      }
-    } catch (error) {
-      removeCookie("token");
-      navigate("/login");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  verifyCookie();
-}, [cookies, navigate, removeCookie]);
-if (loading) {
-  return null; // or a loading spinner
-}
-
-  
-
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
+
+  const { user, logout } = useAuth();
+
+  const userData = user || {};
+
   const Logout = () => {
+    logout();
     removeCookie("token");
     navigate("/");
   };
@@ -71,12 +36,12 @@ if (loading) {
             Search
           </Link>
           <Link to="/" className="text-white font-medium">
-            Bookmarks
+            {userData.username}
           </Link>
         </div>
-        <UploadButton/>
+        <UploadButton />
         <div className="profile-picture w-12 h-12 bg-white rounded-full overflow-hidden">
-            <img src={TestImage} alt="test image" />
+          <img src={TestImage} alt="test image" />
         </div>
         <button className=" text-white ">
           <span onClick={Logout} className="material-symbols-outlined text-3xl">
