@@ -13,9 +13,6 @@ import UploadProjectPopup from "../components/UploadProject.jsx";
 // import { useUserContext } from "../context/UserContext.jsx";
 
 const EditProfile = () => {
-    function handlePopup(){
-        console.log("Button clicked");
-    }
   return (
     <div className="bg-black">
       {/* <div className="background-gradients z-10">
@@ -95,14 +92,23 @@ const EditProfile = () => {
             <div className="photo-container position-center w-[23rem] h-[23rem] rounded-full overflow-hidden">
               <img src={TestImage} alt="test image" />
             </div>
-            <button>
-              <img
-                src={AddButton}
-                alt="add button"
-                className="absolute right-10 bottom-6"
-                onClick={handlePopup}
-              />
-            </button>
+            <Popup
+              trigger={
+                <button>
+                  <img
+                    src={AddButton}
+                    alt="add button"
+                    className="absolute right-10 bottom-6"
+                  />
+                </button>
+              }
+            >
+              {(close) => (
+                <div className="popup-container fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                  <UploadProjectPopup closePopup={close} />
+                </div>
+              )}
+            </Popup>
           </div>
         </div>
         <div className="work-history flex flex-col gap-4 mb-14">
