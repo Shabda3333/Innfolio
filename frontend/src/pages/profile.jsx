@@ -15,7 +15,7 @@ import { useUserContext } from "../context/UserContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 
 
-const profile = () => {
+const Profile = () => {
   const {user}= useAuth();
   const userData=user || {}
     // const {user}= useUserContext()
@@ -116,4 +116,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;

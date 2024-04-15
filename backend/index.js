@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoute = require("./Routes/AuthRoute");
 const userRoute = require("./Routes/UserRoute");
+const workRoute = require("./Routes/WorkRoute")
 
 
 //Express app
@@ -26,7 +27,8 @@ app.use((req, res, next) => {
 
 //Routes
 app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute)
+app.use("/api/user", userRoute);
+app.use("/api/work", workRoute);
 
 app.get("/", (req, res) => {
   console.log("Yes the server is working");

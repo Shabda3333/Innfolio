@@ -16,6 +16,7 @@ import Project from "./pages/project.jsx";
 import ProjectDetails from "./pages/project_details.jsx"
 import Search from "./pages/search.jsx";
 import Bookmark from "./pages/bookmark.jsx";
+import AddWork from "./pages/Account Setup/add-work.jsx";
 import "./index.css";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="explore" element={<Explore />} />
         <Route path="search" element={<Search />} />
         <Route path="bookmark" element={<Bookmark />} />
+        <Route path="add-work" element={<AddWork />} />
         <Route path="account-setup" element={<><Outlet /></>}>
           <Route index element = {<SetupAccount/>}/>
           <Route
@@ -40,6 +42,7 @@ function App() {
           <Route path="user-about" element={<About/>}/>
           <Route path="user-skills" element={<Skills/>}/> 
           <Route path="upload-photo" element={<UploadPhoto/>}/>
+          <Route path="add-work" element={<AddWork />} />
           <Route path="upload-project-ask" element={<UploadProjectAsk/>}/>
           <Route path="upload-project" element={<UploadProject/>}/>
         </Route>

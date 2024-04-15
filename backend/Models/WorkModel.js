@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
 const work = new Schema({
   user_id: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
+    required: [true, "Your user_id is required"],
   },
   role: {
     type: String,

@@ -1,14 +1,8 @@
-// import { Link } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useCookies } from "react-cookie";
-// import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-// import { useUserContext } from "../context/UserContext.jsx";
-import MainLayout from "../layouts/mainLayout.jsx";
+
+import { ToastContainer, toast } from "react-toastify";import MainLayout from "../layouts/mainLayout.jsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-// import ProjectCard from "../components/ProjectCard.jsx";
+
 import SearchBar from "../components/SearchBar.jsx";
 
 

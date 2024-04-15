@@ -2,16 +2,27 @@ const WorkExp = require("../Models/WorkModel");
 const bcrypt = require("bcrypt");
 
 const createWorkExp = async (req, res) => {
-    try {
-      const workExp = new WorkExp({
-        name: req.body.name,
-      });
-      const newWorkExp = await WorkExp.save();
-      res.status(201).json(newWorkExp);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  };
+  console.log("outsied")
+
+  try {
+    const { user_id, role, dateFrom, dateTo, company, address } = req.body;
+
+    const workExp = await WorkExp.create({
+      user_id,
+      role,
+      dateFrom,
+      dateTo,
+      company,
+      address
+    });
+
+    console.log("DATA",workExp)
+    res.status(201).json(workExp);
+  } catch (err) {
+    console.log("err")
+    res.status(400).json({ message: err.message });
+  }
+};
   
 const getAllWorkExp = async (req, res) => {
   try {

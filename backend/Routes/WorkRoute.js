@@ -9,12 +9,11 @@ const {
     updateWorkExp,
 } = require("../Controllers/WorkController");
 
-Router.get("/", createWorkExp);
-Router.post("/", getAllWorkExp);
+Router.post("/", createWorkExp);
+Router.get("/", getAllWorkExp);
 Router.get("/:id", getSingleWorkExp);
 
 //Update & Delete
 Router.delete("/:id", deleteWorkExp);
-Router.patch("/:id", upload.single("avatar"), updateWorkExp);
 
 module.exports = Router;

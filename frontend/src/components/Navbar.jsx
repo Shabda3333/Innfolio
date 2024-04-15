@@ -4,20 +4,11 @@ import InnfolioLogo from "../assets/innfolio.svg";
 import UploadButton from "./UploadButton";
 import TestImage from "../assets/test_image.jpg";
 import { useCookies } from "react-cookie";
-<<<<<<< HEAD
-
-
-const Navbar = () => {
-
-  
-
-=======
 import { useUserContext } from "../context/UserContext.jsx";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 
 const Navbar = () => {
->>>>>>> 75534a27982550096af8678b115ef87c89b3659b
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
 
@@ -44,13 +35,8 @@ const Navbar = () => {
           <Link to="/search" className="text-white font-medium">
             Search
           </Link>
-<<<<<<< HEAD
           <Link to="/bookmark" className="text-white font-medium">
-            Bookmarks
-=======
-          <Link to="/" className="text-white font-medium">
             {userData.username}
->>>>>>> 75534a27982550096af8678b115ef87c89b3659b
           </Link>
         </div>
         <UploadButton />
