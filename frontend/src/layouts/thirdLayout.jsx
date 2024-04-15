@@ -12,7 +12,6 @@ const ThirdLayout = ({ children }) => {
           className="absolute top-[3.625rem] left-[7.5rem] bottom-[3.625rem]"
         />
       </div>
-      
       {children}
     </div>
   );

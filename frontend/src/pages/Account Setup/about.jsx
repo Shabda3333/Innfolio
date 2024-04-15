@@ -51,7 +51,7 @@ const UserAbout = () => {
                 Account Setup
               </h3>
               <form action="" onSubmit={handleOnSubmit}>
-                <div className="professional-role flex flex-col gap-4">
+                <div className="about flex flex-col gap-4">
                   <label
                     htmlFor="about"
                     className="text-lg text-white"

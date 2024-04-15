@@ -1,8 +1,8 @@
 // import React from 'react'
 import { Link } from "react-router-dom";
 import MainLayout from "../layouts/mainLayout.jsx";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 import TestImage from "../assets/test_image.jpg";
 import TestImage2 from "../assets/testimg2.jpg";
 import SkillChip from "../components/SkillChip.jsx";
@@ -55,17 +55,15 @@ const ProjectDetails = () => {
                 Lorem Ipsum.
               </p>
             </div>
-
-            <div className="project-role flex flex-col gap-4">
+            <div className="project-introduction flex flex-col gap-4">
               <h3 className="text-white text-[2rem] font-semibold text-shadow-one">
                 <span className="text-gradient-one">My Role</span>
               </h3>
-              <p className="project-role text-white text-[1.5rem] font-regular">
+              <p className="project-introduction text-white text-[1.5rem] font-regular">
                 Lead Designer
               </p>
             </div>
-
-            <div className="project-skills flex flex-col gap-4">
+            <div className="project-introduction flex flex-col gap-4">
               <h3 className="text-white text-[2rem] font-semibold text-shadow-one">
                 <span className="text-gradient-one">Skills Used</span>
               </h3>
@@ -76,45 +74,6 @@ const ProjectDetails = () => {
                 <SkillChip name="JavaScript" />
               </div>
             </div>
-
-            <div className="project-samples flex flex-col gap-4">
-              <h3 className="text-white text-[2rem] font-semibold text-shadow-one">
-                <span className="text-gradient-one">Work Samples</span>
-              </h3>
-              <div className="projects-container grid grid-cols-2 gap-14">
-                <div className="image-container w-full h-[24rem] bg-cover overflow-hidden rounded-2xl">
-                  <img src={TestImage} alt="test image" />
-                </div>
-                <div className="image-container w-full h-[24rem] bg-cover overflow-hidden rounded-2xl">
-                  <img src={TestImage} alt="test image" />
-                </div>
-                <div className="image-container w-full h-[24rem] bg-cover overflow-hidden rounded-2xl">
-                  <img src={TestImage} alt="test image" />
-                </div>
-                <div className="image-container w-full h-[24rem] bg-cover overflow-hidden rounded-2xl">
-                  <img src={TestImage} alt="test image" />
-                </div>
-              </div>
-            </div>
-
-            <div className="project-introduction flex flex-col gap-4">
-              <h3 className="text-white text-[2rem] font-semibold text-shadow-one">
-                <span className="text-gradient-one">Summary</span>
-              </h3>
-              <p className="project-introduction text-white text-lg font-regular">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </p>
-            </div>
-
             <div className="card-info flex justify-between items-center">
               <div className="name flex justify-center items-center gap-3">
                 <div className="profile-picture w-7 h-7 bg-white rounded-full overflow-hidden">
