@@ -14,6 +14,7 @@ import UploadProjectAsk from "./pages/Account Setup/upload-project-ask.jsx";
 import UploadProject from "./pages/Account Setup/upload-project.jsx";
 import Project from "./pages/project.jsx";
 import ProjectDetails from "./pages/project-details.jsx";
+import EditProfile from "./pages/edit-profile.jsx";
 import "./index.css";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="upload-project-ask" element={<UploadProjectAsk />} />
           <Route path="upload-project" element={<UploadProject />} />
         </Route>
+        <Route path="edit-profile" element={<EditProfile />} />
       </Routes>
     </Router>
   );
