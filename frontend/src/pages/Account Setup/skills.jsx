@@ -25,6 +25,7 @@ const UserSkills = () => {
       testObject.skills = separatedArray;
   
       setUser(testObject);
+      testObject.password = null;
       console.log("User has been set");
       console.log(user);
   

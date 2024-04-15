@@ -5,9 +5,13 @@ import axios from "axios";
 import SecondLayout from "../layouts/secondLayout.jsx";
 import LoginSignupButton from "../components/LoginSignupButton.jsx";
 import SignInIllustration from "../assets/illustrations/sign_in_illustration.svg";
+import { useAuth } from "../context/AuthContext.jsx";
 
 const Signin = () => {
+  const {user}=useAuth()
+  const userDetail=user || {}
   
+  console.log(userDetail);
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
       email: "",
@@ -50,6 +54,7 @@ const Signin = () => {
         const { success, message } = data;
   
         if (success) {
+
           handleSuccess(message);
           setTimeout(() => {
             navigate("/explore");

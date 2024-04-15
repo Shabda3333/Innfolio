@@ -75,7 +75,7 @@ const updateUser = async (req, res) => {
       user.username = req.body.username;
     }
     if (req.body.password != null) {
-      user.password = await bcrypt.hash(req.body.password, 12);
+      user.password = req.body.password;
     }
     if (req.body.role != null) {
       user.role = req.body.role;

@@ -26,7 +26,7 @@ const UserAbout = () => {
     console.log("User has been set");
     console.log(user);
 
-    navigate("/account-setup/upload-project-ask");
+    navigate("/account-setup/user-skills");
     
     } catch (error) {
       console.log(error.message);

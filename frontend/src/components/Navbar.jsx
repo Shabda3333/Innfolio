@@ -1,11 +1,55 @@
 // import React from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, isRouteErrorResponse, useNavigate } from "react-router-dom";
 import InnfolioLogo from "../assets/innfolio.svg";
 import UploadButton from "./UploadButton";
 import TestImage from "../assets/test_image.jpg"
 import { useCookies } from "react-cookie";
+import { useUserContext } from "../context/UserContext.jsx";
+import { useEffect } from "react";
 
 const Navbar = () => {
+const {setUser} = useUserContext();
+
+useEffect(() => {
+  const verifyCookie = async () => {
+    // if (!cookies.token) {
+    //   navigate("/login");
+    //   console.log("No cookies")
+    //   return;
+    // }
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/api/user/",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user,userid } = data;
+      if (status) {
+        fetch(`http://localhost:3333/api/user/${userid}`)
+          .then((response) => response.json())
+          .then((data)=> setUser(data))
+          .catch((error)=> console.error("Erorr fetching user data: ",error));
+      } else {
+        removeCookie("token");
+        navigate("/login");
+      }
+    } catch (error) {
+      removeCookie("token");
+      navigate("/login");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  verifyCookie();
+}, [cookies, navigate, removeCookie]);
+if (loading) {
+  return null; // or a loading spinner
+}
+
+  
+
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const Logout = () => {
@@ -23,7 +67,7 @@ const Navbar = () => {
           <Link to="/profile" className="text-cyan font-semibold">
             Profile
           </Link>
-          <Link to="/" className="text-white font-medium">
+          <Link to="/search" className="text-white font-medium">
             Search
           </Link>
           <Link to="/" className="text-white font-medium">
