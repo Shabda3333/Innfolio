@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar.jsx";
 
 
-const Explore = () => {
+const Search = () => {
 
  
   return (
@@ -23,7 +23,7 @@ const Explore = () => {
       </div>
       <Navbar />
       <MainLayout>
-      <SearchBar/>
+      <div className=" pt-32 pb-96"><SearchBar/></div>
        
         <Footer />
         <ToastContainer/>
@@ -34,4 +34,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default Search;

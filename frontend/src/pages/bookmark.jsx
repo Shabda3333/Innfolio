@@ -1,18 +1,14 @@
-// import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import { useUserContext } from "../context/UserContext.jsx";
-import MainLayout from "../layouts/mainLayout.jsx";
+
+import { ToastContainer, toast } from "react-toastify";import MainLayout from "../layouts/mainLayout.jsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ProjectCard from "../components/ProjectCard.jsx";
+
+
 import SearchBar from "../components/SearchBar.jsx";
 
 
-const Explore = () => {
+const Bookmark = () => {
 
  
   return (
@@ -23,7 +19,35 @@ const Explore = () => {
       </div>
       <Navbar />
       <MainLayout>
-      <SearchBar/>
+      <h3 className="text-white text-[2rem] font-semibold text-shadow-one pb-10">
+                <span className="text-gradient-one">Bookmarks</span>
+              </h3>
+      <div className="projects-container grid grid-cols-4 gap-14 mb-32">
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+        </div>
        
         <Footer />
         <ToastContainer/>
@@ -34,4 +58,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default Bookmark;

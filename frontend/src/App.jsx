@@ -14,6 +14,8 @@ import UploadProjectAsk from "./pages/Account Setup/upload-project-ask.jsx";
 import UploadProject from "./pages/Account Setup/upload-project.jsx"
 import Project from "./pages/project.jsx";
 import ProjectDetails from "./pages/project_details.jsx"
+import Search from "./pages/search.jsx";
+import Bookmark from "./pages/bookmark.jsx";
 import "./index.css";
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
         <Route path="project" element={<Project />} />
         <Route path="project-details" element={<ProjectDetails />} />
         <Route path="explore" element={<Explore />} />
+        <Route path="search" element={<Search />} />
+        <Route path="bookmark" element={<Bookmark />} />
         <Route path="account-setup" element={<><Outlet /></>}>
           <Route index element = {<SetupAccount/>}/>
           <Route
