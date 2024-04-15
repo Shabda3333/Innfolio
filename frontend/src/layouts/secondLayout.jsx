@@ -1,6 +1,6 @@
 import InnfolioLogo from "../assets/innfolio.svg";
 
-const secondLayout = ({ children }) => {
+const SecondLayout = ({ children }) => {
   return (
     <div className="bg-[#141414] w-full h-screen overflow-hidden">
       <div className="relative">
@@ -17,4 +17,4 @@ const secondLayout = ({ children }) => {
   );
 };
 
-export default secondLayout;
+export default SecondLayout;

@@ -6,7 +6,7 @@ import SecondLayout from "../layouts/secondLayout.jsx";
 import LoginSignupButton from "../components/LoginSignupButton.jsx";
 import SignInIllustration from "../assets/illustrations/sign_in_illustration.svg";
 
-const signin = () => {
+const Signin = () => {
   
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
@@ -134,4 +134,4 @@ const signin = () => {
   );
 };
 
-export default signin;
+export default Signin;

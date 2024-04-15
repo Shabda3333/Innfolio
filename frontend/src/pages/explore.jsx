@@ -12,7 +12,7 @@ import ProjectCard from "../components/ProjectCard.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 
 
-const explore = () => {
+const Explore = () => {
 
   const { user, setUser } = useUserContext();
   console.log(user);
@@ -104,4 +104,4 @@ const explore = () => {
   );
 };
 
-export default explore;
+export default Explore;

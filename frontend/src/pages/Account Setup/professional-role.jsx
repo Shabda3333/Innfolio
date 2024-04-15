@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 
-const user_professional_role = () => {
+const UserRrofessionalRole = () => {
   const { user, setUser } = useUserContext();
   const navigate = useNavigate();
 
@@ -67,7 +67,7 @@ const user_professional_role = () => {
                     className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                   />
                 </div>
-                <button type="submit" className="w-3/12">
+                <button type="submit" className="w-3/12 pt-6">
                   <ContinueButton title="Continue" />
                 </button>
               </form>
@@ -79,4 +79,4 @@ const user_professional_role = () => {
   );
 };
 
-export default user_professional_role;
+export default UserRrofessionalRole;

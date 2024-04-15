@@ -5,7 +5,7 @@ import SecondLayout from "../../layouts/secondLayout.jsx";
 import LoginSignupButton from "../../components/LoginSignupButton.jsx";
 import SetupAccountIllustration from "../../assets/illustrations/setup_account_illustration.svg";
 
-const account_setup = () => {
+const AccountSetup = () => {
   const{user}=useUserContext();
   console.log(user);
   return (
@@ -34,4 +34,4 @@ const account_setup = () => {
     </div>
   );
 };
-export default account_setup;
+export default AccountSetup;

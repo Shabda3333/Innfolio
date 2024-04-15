@@ -14,7 +14,7 @@ import TestImage from "../assets/test_image.jpg";
 import { useUserContext } from "../context/UserContext.jsx";
 
 
-const profile = () => {
+const Profile = () => {
     const {user}= useUserContext()
     console.log(user.username)
   return (
@@ -65,15 +65,15 @@ const profile = () => {
           </div>
         </div>
         <div className="my-skills flex flex-col gap-4 mb-14">
-          <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
+        <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
             My <span className="text-gradient-one">Skills</span>
           </h3>
           <div className="skills flex gap-8">
-            {user.skills.map((skill, index) => (
-              <SkillChip key={index} name={skill} />
-            ))}
+            <SkillChip name="HTML" />
+            <SkillChip name="CSS" />
+            <SkillChip name="Tailwind" />
+            <SkillChip name="JavaScript" />
           </div>
-
         </div>
         <div className="work-experience flex flex-col gap-4 mb-14">
           <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
@@ -113,4 +113,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;

@@ -5,7 +5,7 @@ import { useUserContext } from "../../context/UserContext.jsx";
 import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 
-const user_skills = () => {
+const UserSkills = () => {
   const { user, setUser } = useUserContext();
   const navigate = useNavigate();
 
@@ -68,7 +68,7 @@ const user_skills = () => {
                 Account Setup
               </h3>
               <form action="" onSubmit={handleOnSubmit}>
-                <div className="professional-role flex flex-col gap-4">
+                <div className="skills flex flex-col gap-4">
                   <label htmlFor="skills" className="text-lg text-white">
                     Whats are Your Skills?
                   </label>
@@ -82,7 +82,7 @@ const user_skills = () => {
                     className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                   />
                 </div>
-                <button className="w-3/12">
+                <button className="w-3/12 pt-6">
                   
                     <ContinueButton title="Continue" />
                   
@@ -96,4 +96,4 @@ const user_skills = () => {
   );
 };
 
-export default user_skills;
+export default UserSkills;

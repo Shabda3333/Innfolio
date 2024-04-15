@@ -3,7 +3,7 @@ import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 import UploadPhotoIcon from "../../assets/upload_photo.svg";
 
-const professional_role = () => {
+const ProfessionalRole = () => {
   return (
     <div>
       <SecondLayout>
@@ -38,4 +38,4 @@ const professional_role = () => {
   );
 };
 
-export default professional_role;
+export default ProfessionalRole;

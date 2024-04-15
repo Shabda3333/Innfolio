@@ -10,6 +10,10 @@ import ProfessionalRole from "./pages/Account Setup/professional-role.jsx";
 import Skills from "./pages/Account Setup/skills.jsx";
 import About from "./pages/Account Setup/about.jsx";
 import UploadPhoto from "./pages/Account Setup/upload-photo.jsx";
+import UploadProjectAsk from "./pages/Account Setup/upload-project-ask.jsx";
+import UploadProject from "./pages/Account Setup/upload-project.jsx"
+import Project from "./pages/project.jsx";
+import ProjectDetails from "./pages/project_details.jsx"
 import "./index.css";
 
 function App() {
@@ -20,6 +24,8 @@ function App() {
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="project" element={<Project />} />
+        <Route path="project-details" element={<ProjectDetails />} />
         <Route path="explore" element={<Explore />} />
         <Route path="account-setup" element={<><Outlet /></>}>
           <Route index element = {<SetupAccount/>}/>
@@ -27,14 +33,11 @@ function App() {
             path="user-professional-role"
             element={<ProfessionalRole/>}
           />
-<<<<<<< HEAD
           <Route path="user-about" element={<About/>}/>
           <Route path="user-skills" element={<Skills/>}/> 
-=======
-          <Route path="about" element={<About/>}/>
-          <Route path="skills" element={<Skills/>}/>
           <Route path="upload-photo" element={<UploadPhoto/>}/>
->>>>>>> cafef4c3fbb1000ca8949551e7fed9e49c1586d1
+          <Route path="upload-project-ask" element={<UploadProjectAsk/>}/>
+          <Route path="upload-project" element={<UploadProject/>}/>
         </Route>
       </Routes>
     </Router>

@@ -5,7 +5,7 @@ import { useUserContext } from "../../context/UserContext.jsx";
 import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 
-const user_about = () => {
+const UserAbout = () => {
   const { user, setUser } = useUserContext();
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const user_about = () => {
     console.log("User has been set");
     console.log(user);
 
-    navigate("/account-setup/user-skills");
+    navigate("/account-setup/upload-project-ask");
     
     } catch (error) {
       console.log(error.message);
@@ -69,7 +69,7 @@ const user_about = () => {
                     className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-2xl"
                   />
                 </div>
-                <button type="submit" className="w-3/12">
+                <button type="submit" className="w-3/12 pt-6">
                   <ContinueButton title="Continue" />
                 </button>
               </form>
@@ -81,4 +81,4 @@ const user_about = () => {
   );
 };
 
-export default user_about;
+export default UserAbout;
