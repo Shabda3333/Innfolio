@@ -12,11 +12,14 @@ import InstagramLogo from "../assets/icons/instagram.svg";
 import GithubLogo from "../assets/icons/github.svg";
 import TestImage from "../assets/test_image.jpg";
 import { useUserContext } from "../context/UserContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 
 
 const profile = () => {
-    const {user}= useUserContext()
-    console.log(user.username)
+  const {user}= useAuth();
+  const userData=user || {}
+    // const {user}= useUserContext()
+    // console.log(user.username)
   return (
     <div className="bg-black">
       <div className="background-gradients z-10">
@@ -33,14 +36,14 @@ const profile = () => {
                 Hello,
               </p>
               <p className="text-white text-[4.5rem] text-shadow-one font-semibold">
-                I'm <span className="text-gradient-one">{user.username}</span>
+                I'm <span className="text-gradient-one">{userData.username}</span>
               </p>
               <p className="text-white text-[2.5rem] text-shadow-one font-medium">
-                {user.role}
+                {userData.role}
               </p>
             </div>
             <p className="description text-white text-lg font-regular">
-              {user.about}
+              {userData.about}
             </p>
             <div className="socials flex items-center gap-8">
               <Link to="/">
@@ -69,7 +72,7 @@ const profile = () => {
             My <span className="text-gradient-one">Skills</span>
           </h3>
           <div className="skills flex gap-8">
-            {user.skills.map((skill, index) => (
+            {userData.skills.map((skill, index) => (
               <SkillChip key={index} name={skill} />
             ))}
           </div>

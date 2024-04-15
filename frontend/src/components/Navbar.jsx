@@ -2,17 +2,31 @@
 import { Link, useNavigate } from "react-router-dom";
 import InnfolioLogo from "../assets/innfolio.svg";
 import UploadButton from "./UploadButton";
-import TestImage from "../assets/test_image.jpg"
+import TestImage from "../assets/test_image.jpg";
 import { useCookies } from "react-cookie";
+<<<<<<< HEAD
 
 
 const Navbar = () => {
 
   
 
+=======
+import { useUserContext } from "../context/UserContext.jsx";
+import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext.jsx";
+
+const Navbar = () => {
+>>>>>>> 75534a27982550096af8678b115ef87c89b3659b
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
+
+  const { user, logout } = useAuth();
+
+  const userData = user || {};
+
   const Logout = () => {
+    logout();
     removeCookie("token");
     navigate("/");
   };
@@ -30,13 +44,18 @@ const Navbar = () => {
           <Link to="/search" className="text-white font-medium">
             Search
           </Link>
+<<<<<<< HEAD
           <Link to="/bookmark" className="text-white font-medium">
             Bookmarks
+=======
+          <Link to="/" className="text-white font-medium">
+            {userData.username}
+>>>>>>> 75534a27982550096af8678b115ef87c89b3659b
           </Link>
         </div>
-        <UploadButton/>
+        <UploadButton />
         <div className="profile-picture w-12 h-12 bg-white rounded-full overflow-hidden">
-            <img src={TestImage} alt="test image" />
+          <img src={TestImage} alt="test image" />
         </div>
         <button className=" text-white ">
           <span onClick={Logout} className="material-symbols-outlined text-3xl">

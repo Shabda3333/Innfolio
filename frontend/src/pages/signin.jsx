@@ -8,10 +8,11 @@ import SignInIllustration from "../assets/illustrations/sign_in_illustration.svg
 import { useAuth } from "../context/AuthContext.jsx";
 
 const Signin = () => {
-  const {user}=useAuth()
-  const userDetail=user || {}
+  const{login,user,logout} = useAuth();
+  // const {user}=useAuth()
+  // const userDetail=user || {}
   
-  console.log(userDetail);
+  // console.log(userDetail);
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
       email: "",
@@ -51,11 +52,12 @@ const Signin = () => {
         );
   
         console.log(data);
-        const { success, message } = data;
+        const { success, message,user } = data;
   
         if (success) {
 
           handleSuccess(message);
+          login(user)
           setTimeout(() => {
             navigate("/explore");
           }, 1000);
