@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SkillChip from "../components/SkillChip.jsx";
 import ExperienceCard from "../components/ExperienceCard.jsx";
-import ProjectCard from "../components/ProjectCard.jsx";
+import UserProjectCard from "../components/UserProjectCard.jsx";
 import TwitterLogo from "../assets/icons/twitter.svg";
 import FacebookLogo from "../assets/icons/facebook.svg";
 import InstagramLogo from "../assets/icons/instagram.svg";
@@ -13,13 +13,28 @@ import GithubLogo from "../assets/icons/github.svg";
 import TestImage from "../assets/test_image.jpg";
 import { useUserContext } from "../context/UserContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
-
+import { useState, useEffect } from "react";
 
 const Profile = () => {
-  const {user}= useAuth();
-  const userData=user || {}
-    // const {user}= useUserContext()
-    // console.log(user.username)
+  const { user } = useAuth();
+
+  const userData = user || {};
+
+  const [work, setWork] = useState([]);
+  
+  const filteredWorkData = work.filter((w) => userData._id=== w.user_id)
+  console.log(filteredWorkData);
+
+  useEffect(() => {
+    fetch("http://localhost:3333/api/work")
+      .then((response) => response.json())
+      .then((data) => setWork(data))
+      .catch((error) => console.error("Error fetching categories: ", error));
+  }, []);
+
+  console.log(userData._id);
+  //   const {user}= useUserContext()
+  // console.log(user.username)
   return (
     <div className="bg-black">
       <div className="background-gradients z-10">
@@ -36,7 +51,8 @@ const Profile = () => {
                 Hello,
               </p>
               <p className="text-white text-[4.5rem] text-shadow-one font-semibold">
-                I'm <span className="text-gradient-one">{userData.username}</span>
+                I'm{" "}
+                <span className="text-gradient-one">{userData.username}</span>
               </p>
               <p className="text-white text-[2.5rem] text-shadow-one font-medium">
                 {userData.role}
@@ -72,23 +88,26 @@ const Profile = () => {
             My <span className="text-gradient-one">Skills</span>
           </h3>
           <div className="skills flex gap-8">
-            {userData.skills.map((skill, index) => (
+            {userData.skills?.map((skill, index) => (
               <SkillChip key={index} name={skill} />
             ))}
           </div>
-
         </div>
         <div className="work-experience flex flex-col gap-4 mb-14">
           <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
             Work <span className="text-gradient-one">Experience</span>
           </h3>
           <div className="experiences grid grid-cols-3 gap-8">
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
+          {filteredWorkData && filteredWorkData.map((experience, index) => (
+            <ExperienceCard
+              key={index}
+              dateFrom={experience.dateFrom}
+              dateTo={experience.dateTo}
+              role={experience.role}
+              company={experience.company}
+              address={experience.address}
+            />
+          ))}
           </div>
         </div>
         <div className="my-projects flex flex-col gap-4 mb-24">
@@ -96,18 +115,12 @@ const Profile = () => {
             My <span className="text-gradient-one">Projects</span>
           </h3>
           <div className="projects-container grid grid-cols-4 gap-14">
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            <UserProjectCard />
+            <UserProjectCard />
+            <UserProjectCard />
+            <UserProjectCard />
+            <UserProjectCard />
+            
           </div>
         </div>
         <Footer />

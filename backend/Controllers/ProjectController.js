@@ -1,14 +1,32 @@
 const Project = require("../Models/ProjectModel");
 
+
 // Create a new Project
 const createProject = async (req, res) => {
+  console.log("outsied")
+
   try {
-    const Project = new Project({
-      name: req.body.name,
+    const { user_id, title, introduction, role, skills, summary  } = req.body;
+
+    const skillsString = skills;
+    // const thumbnail = req.file.thumbnail;
+    console.log("file",req.file);
+
+    const project = await Project.create({
+      user_id,
+      title,
+      introduction,
+      role,
+      skills: skillsString,
+      summary,
+    
+      thumbnail: req.file.filename,
     });
-    const newProject = await Project.save();
-    res.status(201).json(newProject);
+
+    console.log("DATA",project)
+    res.status(201).json(project);
   } catch (err) {
+    console.log("err")
     res.status(400).json({ message: err.message });
   }
 };

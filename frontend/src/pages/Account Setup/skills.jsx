@@ -4,9 +4,12 @@ import { useState } from "react";
 import { useUserContext } from "../../context/UserContext.jsx";
 import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const UserSkills = () => {
   const { user, setUser } = useUserContext();
+  const{login} = useAuth();
+
   const navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState({
@@ -36,13 +39,15 @@ const UserSkills = () => {
         },
         body: JSON.stringify(testObject)
       });
-  
+      const data = await response.json();
+      console.log(data);
+      login(data)
       if (!response.ok) {
         throw new Error('Failed to update user');
       }
   
-      const data = await response.json();
-      console.log(data);
+      // const data = await response.json();
+      // console.log(data);
   
       navigate("/explore");
   

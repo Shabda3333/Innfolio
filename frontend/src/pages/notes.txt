@@ -1,0 +1,465 @@
+similary:
+this is 
+
+ProjectCard.jsx:
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
+
+import TestImage from "../assets/test_image.jpg";
+import Heart from "../assets/heart.svg";
+
+const ProjectCard = () => {
+  return (
+    <Link to="/project"> 
+      <div className="w-[16rem] flex flex-col gap-2">
+        <div className="image-container w-full h-[15rem] bg-cover overflow-hidden rounded-2xl">
+          <img src={TestImage} alt="test image" />
+        </div>
+        <div className="card-info flex justify-between items-center">
+          <div className="name flex justify-center items-center gap-3">
+              <div className="profile-picture w-7 h-7 bg-white rounded-full overflow-hidden">
+                <img src={TestImage} alt="test image" />
+              </div>
+              <p className="text-white text-base font-medium">Swikriti Suwal</p>
+          </div>
+          <div className="stats flex justify-center items-center gap-1">
+              <img src={Heart} alt="heart" />
+              <p className="text-white text-base font-medium">500</p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+export default ProjectCard;
+
+
+ProjectModel.js:
+const mongoose = require("mongoose");
+const project = new Schema({
+  user_id: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  title: {
+    type: String,
+    required: [true, "Your role is required"],
+  },
+  introduction: {
+    type: String,
+    required: [true, "Your starting date is required"],
+  },
+  role: {
+    type: String,
+    required: [true, "Your end date is required"],
+  },
+  skills: {
+    type: String,
+    required: [true, "Your company is required"],
+  },
+  summary: {
+    type: String,
+    required: [true, "Your address is required"],
+  },
+  link: {
+    type: String,
+  },
+  photos: {
+    type: [String],
+  },
+  thumbnail: {
+    type: String,
+    required: [true, "Your thumnail is required"],
+  },
+},
+{ timestamps: true }
+);
+module.exports = mongoose.model("Project", project);
+
+upload-project.jsx (for updating model ):
+// import React from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ThirdLayout from "../layouts/thirdLayout.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
+import UploadPhotoIcon from "../assets/upload_photo.svg";
+import ContinueButton from "../components/LoginSignupButton.jsx";
+import UploadField from "../components/UploadField.jsx";
+import UploadMutliple from "../components/UploadMultiple.jsx";
+
+const UploadProject = () => {
+  const { user } = useAuth();
+  const userData = user || {};
+
+  console.log("userdata", userData._id);
+  // const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
+
+  const [inputValue, setInputValue] = useState({
+    user_id: userData._id,
+    title: "",
+    introduction: "",
+    role: "",
+    skills: "",
+    summary: "",
+    photos: "",
+    thumbnail: "",
+  });
+
+  useEffect(() => {
+    setInputValue({
+      user_id: userData._id,
+      title: "",
+      introduction: "",
+      role: "",
+      skills: "",
+      summary: "",
+      photos: "",
+      thumbnail: "",
+    });
+  }, [userData]);
+
+  useEffect(() => {
+    console.log("input value from useeffect: ", inputValue);
+  }, [inputValue]);
+
+  const { title, introduction, role, skills, summary, photos, thumbnail } =
+    inputValue;
+
+  const handleOnSubmit = async (e) => {
+    try {
+      e.preventDefault();
+
+      // var inputValue = { ...work };
+
+      // setWork(inputValue);
+      // console.log("Work has been set");
+      console.log(JSON.stringify(inputValue));
+
+      const response = await fetch(`http://localhost:3333/api/project`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputValue),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update user");
+      }
+
+      //     const data = await response.json();
+      //     console.log(data);
+
+      //     navigate("/explore");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+    console.log(" this is input", inputValue);
+  };
+
+  return (
+    <div>
+      <ThirdLayout>
+        <div className=" margin-wrapper position-center pt-[150px] w-full h-screen px-[120px] pb-[150px]">
+          <div className="content-wrapper w-full flex flex-col gap-9 justify-between items-end p-20 form-background border-[1px] border-dark-grey px-20 rounded-[1.875rem]">
+            <div className="top-elements w-full flex flex-col gap-9 pb-9">
+              <h3 className="text-white text-4xl font-semibold">
+                Upload Project
+              </h3>
+              <form onSubmit={handleOnSubmit}>
+                <div className="title flex flex-col gap-4 pb-10">
+                  <label htmlFor="title" className="text-lg text-white">
+                    Project Title
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={inputValue.title}
+                    onChange={handleOnChange}
+                    placeholder=" "
+                    className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
+                  />
+                </div>
+
+                <div className="role flex flex-col gap-4 pb-10">
+                  <label htmlFor="role" className="text-lg text-white">
+                    Your Role
+                  </label>
+                  <input
+                    type="text"
+                    id="role"
+                    name="role"
+                    value={inputValue.role}
+                    onChange={handleOnChange}
+                    placeholder=" "
+                    className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
+                  />
+                </div>
+
+                <div className="introduction flex flex-col gap-4 pb-10">
+                  <label htmlFor="introduction" className="text-lg text-white">
+                    Introduction
+                  </label>
+                  <textarea
+                    rows={6}
+                    type="text"
+                    id="introduction"
+                    name="introduction"
+                    value={inputValue.introduction}
+                    onChange={handleOnChange}
+                    placeholder=" "
+                    className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-2xl"
+                  />
+                </div>
+                <div className="skills flex flex-col gap-4 pb-10">
+                  <label htmlFor="skills" className="text-lg text-white">
+                    Skills Used
+                  </label>
+                  <input
+                    type="text"
+                    id="skills"
+                    name="skills"
+                    value={inputValue.skills}
+                    onChange={handleOnChange}
+                    placeholder=" "
+                    className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
+                  />
+                </div>
+                <div className="photos flex flex-col gap-4 pb-10">
+                  <label htmlFor="photos" className="text-lg text-white">
+                    Upload Samples
+                  </label>
+                  <UploadMutliple
+                    id="photos"
+                    name="photos"
+                    value={inputValue.photos}
+                    onChange={handleOnChange}
+                  />
+                </div>
+
+                <div className="summary flex flex-col gap-4 pb-10">
+                  <label htmlFor="summary" className="text-lg text-white">
+                    Summary
+                  </label>
+                  <textarea
+                    rows={6}
+                    type="text"
+                    id="summary"
+                    name="summary"
+                    value={summary}
+                    onChange={handleOnChange}
+                    placeholder=" "
+                    className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-2xl"
+                  />
+                </div>
+
+                <div className="thumbnail flex flex-col gap-4 pb-10">
+                  <label htmlFor="thumnail" className="text-lg text-white">
+                    Upload Thumbnail
+                  </label>
+                  <UploadField
+                    id="thumbnail"
+                    name="thumbnail"
+                    value={inputValue.thumbnail}
+                    onChange={handleOnChange}
+                  />
+                </div>
+                <button type="submit" className="w-3/12 pt-6">
+                  <Link to="/account-setup/user-skills">
+                    <ContinueButton title="Continue" />
+                  </Link>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ThirdLayout>
+    </div>
+  );
+};
+
+export default UploadProject;
+
+
+mow modify the profile page accordingly
+
+
+
+################################################
+
+// import React from 'react'
+import { useEffect,useState } from "react";
+import { Link } from "react-router-dom";
+import MainLayout from "../layouts/mainLayout.jsx";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import SkillChip from "../components/SkillChip.jsx";
+import ExperienceCard from "../components/ExperienceCard.jsx";
+import ProjectCard from "../components/ProjectCard.jsx";
+import TwitterLogo from "../assets/icons/twitter.svg";
+import FacebookLogo from "../assets/icons/facebook.svg";
+import InstagramLogo from "../assets/icons/instagram.svg";
+import GithubLogo from "../assets/icons/github.svg";
+import TestImage from "../assets/test_image.jpg";
+import { useUserContext } from "../context/UserContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
+
+
+
+const profile = () => {
+  const {user}= useAuth();
+  const userData=user || {}
+  const [workExperience, setWorkExperience] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch(`http://localhost:3333/api/project`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: userData._id }),
+        });
+        const data = await response.json();
+        setProjects(data); // Set the fetched project data in state
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const fetchWorkExperience = async () => {
+      try {
+        const response = await fetch(`http://localhost:3333/api/work`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: userData._id }),
+        });
+        const data = await response.json();
+        setWorkExperience(data); // Set the fetched work experience data in state
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProjects();
+    fetchWorkExperience();
+  }, [userData._id]);
+
+    // const {user}= useUserContext()
+    // console.log(user.username)
+  return (
+    <div className="bg-black">
+      <div className="background-gradients z-10">
+        <div className="first-gradient w-[62rem] h-[62rem] rotate-[78deg] absolute top-[-437px] left-[-517px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
+        <div className="second-gradient w-[36rem] h-[36rem] rotate-[59.79deg] absolute top-[382px] right-[-382px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
+        <div className="third-gradient w-[45rem] h-[45rem] rotate-[59.79deg] absolute top-[957px] left-[-692px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
+      </div>
+      <Navbar></Navbar>
+      <MainLayout>
+        <div className="introduction w-full flex justify-between items-start mb-14">
+          <div className="text w-[45rem] flex flex-col gap-4">
+            <div className="main-information flex flex-col gap-0">
+              <p className="text-white text-[2.5rem] text-shadow-one font-medium">
+                Hello,
+              </p>
+              <p className="text-white text-[4.5rem] text-shadow-one font-semibold">
+                I'm <span className="text-gradient-one">{userData.username}</span>
+              </p>
+              <p className="text-white text-[2.5rem] text-shadow-one font-medium">
+                {userData.role}
+              </p>
+            </div>
+            <p className="description text-white text-lg font-regular">
+              {userData.about}
+            </p>
+            <div className="socials flex items-center gap-8">
+              <Link to="/">
+                <img src={TwitterLogo} alt="twitter logo" />
+              </Link>
+              <Link to="/">
+                <img src={InstagramLogo} alt="instagram logo" />
+              </Link>
+              <Link to="/">
+                <img src={FacebookLogo} alt="facebook logo" />
+              </Link>
+              <Link to="/">
+                <img src={GithubLogo} alt="github logo" />
+              </Link>
+            </div>
+          </div>
+          <div className="photo w-[24rem] h-[24rem] relative">
+            <div className="photo-border absolute w-[24rem] h-[24rem] rounded-full gradient-two"></div>
+            <div className="photo-container position-center w-[23rem] h-[23rem] rounded-full overflow-hidden">
+              <img src={TestImage} alt="test image" />
+            </div>
+          </div>
+        </div>
+        <div className="my-skills flex flex-col gap-4 mb-14">
+          <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
+            My <span className="text-gradient-one">Skills</span>
+          </h3>
+          <div className="skills flex gap-8">
+            {userData.skills && userData.skills.map((skill, index) => (
+              <SkillChip key={index} name={skill} />
+            ))}
+          </div>
+
+        </div>
+        <div className="work-experience flex flex-col gap-4 mb-14">
+          <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
+            Work <span className="text-gradient-one">Experience</span>
+          </h3>
+          <div className="experiences grid grid-cols-3 gap-8">
+          {workExperience.map((experience, index) => (
+            <ExperienceCard
+              key={index}
+              dateFrom={experience.dateFrom}
+              dateTo={experience.dateTo}
+              role={experience.role}
+              company={experience.company}
+              address={experience.address}
+            />
+          ))}
+        </div>
+        </div>
+        <div className="my-projects flex flex-col gap-4 mb-24">
+          <h3 className="text-white text-[3.25rem] font-semibold text-shadow-one">
+            My <span className="text-gradient-one">Projects</span>
+          </h3>
+          <div className="projects-container grid grid-cols-4 gap-14">
+          {/* Map over the projects array and render a ProjectCard for each entry */}
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              title={project.title}
+              introduction={project.introduction}
+              role={project.role}
+              skills={project.skills}
+              summary={project.summary}
+              thumbnail={project.thumbnail}
+            />
+          ))}
+        </div>
+        </div>
+        <Footer />
+      </MainLayout>
+    </div>
+  );
+};
+
+export default profile;

@@ -1,11 +1,10 @@
 // import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useUserContext } from "../../context/UserContext.jsx";
-import ThirdLayout from "../../layouts/thirdLayout";
-import ContinueButton from "../../components/LoginSignupButton.jsx";
-import UploadPhotoIcon from "../../assets/upload_photo.svg";
-import { useAuth } from "../../context/AuthContext.jsx";
+import { useUserContext } from "../context/UserContext.jsx";
+import ThirdLayout from "../layouts/thirdLayout.jsx";
+import ContinueButton from "../components/LoginSignupButton.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 
 const AddWork = () => {
 
@@ -61,11 +60,11 @@ const AddWork = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update user");
+        throw new Error("Failed to update work");
       }
 
-      //     const data = await response.json();
-      //     console.log(data);
+          const data = await response.json();
+          console.log(data);
 
       //     navigate("/explore");
     } catch (error) {
@@ -169,8 +168,8 @@ const AddWork = () => {
                 </div>
 
                 <button type="submit" className="w-3/12 pt-6">
-                  <Link to="/account-setup/user-skills">
-                    <ContinueButton title="Continue" />
+                  <Link to="/edit-profile">
+                    <ContinueButton title="Save" />
                   </Link>
                 </button>
               </form>

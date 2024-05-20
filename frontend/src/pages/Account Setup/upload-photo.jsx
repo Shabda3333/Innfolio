@@ -2,8 +2,10 @@
 import SecondLayout from "../../layouts/secondLayout";
 import ContinueButton from "../../components/LoginSignupButton.jsx";
 import UploadPhotoIcon from "../../assets/upload_photo.svg";
+import UploadField from "../../components/UploadField.jsx";
 
-const ProfessionalRole = () => {
+const UploadPhoto = () => {
+  
   return (
     <div>
       <SecondLayout>
@@ -18,16 +20,11 @@ const ProfessionalRole = () => {
                   <label htmlFor="upload-photo" className="text-lg text-white">
                     Upload Your Photo
                   </label>
-                  <button>
-                      <div className="upload-photo-area h-[12rem] dashed-border flex justify-center items-center">
-                        <div className="icon-container w-14 h-14 bg-white flex justify-center items-center rounded-full">
-                          <img src={UploadPhotoIcon} alt="upload photo icon" />
-                        </div>
-                      </div>
-                  </button>
+                  <UploadField/>
                 </div>
               </form>
             </div>
+            
             <button className="w-3/12">
               <ContinueButton title="Continue" />
             </button>
@@ -38,4 +35,4 @@ const ProfessionalRole = () => {
   );
 };
 
-export default ProfessionalRole;
+export default UploadPhoto;

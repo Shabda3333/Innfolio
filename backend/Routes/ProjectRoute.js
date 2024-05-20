@@ -10,7 +10,7 @@ const {
     updateProject,
 } = require("../Controllers/ProjectController");
 
-Router.post("/", createProject);
+Router.post("/",upload.single("thumbnail") ,createProject);
 Router.get("/", getAllProjects);
 Router.get("/:id", getSingleProject);
 

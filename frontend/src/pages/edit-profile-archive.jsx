@@ -10,29 +10,12 @@ import TestImage from "../assets/test_image.jpg";
 import CTAButton from "../components/LoginSignupButton.jsx";
 import AddButton from "../assets/add-filled.svg";
 import UploadProjectPopup from "../components/UploadProject.jsx";
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
-import { useState, useEffect } from "react";
 // import { useUserContext } from "../context/UserContext.jsx";
 
-const EditProfile = () => {
-  const { user } = useAuth();
-
-  const userData = user || {};
-
-  const [work, setWork] = useState([]);
-
-  const filteredWorkData = work.filter((w) => userData._id === w.user_id);
-  console.log(filteredWorkData);
-
-  useEffect(() => {
-    fetch("http://localhost:3333/api/work")
-      .then((response) => response.json())
-      .then((data) => setWork(data))
-      .catch((error) => console.error("Error fetching categories: ", error));
-  }, []);
+const EditProfileArchive = () => {
   return (
     <div className="bg-black">
+      
       <Navbar></Navbar>
       <MainLayout>
         <div className="introduction w-full flex justify-between items-start mb-24">
@@ -106,10 +89,11 @@ const EditProfile = () => {
               <img src={TestImage} alt="test image" />
             </div>
             <img
-              src={AddButton}
-              alt="add button"
-              className="absolute right-10 bottom-6"
-            />
+                    src={AddButton}
+                    alt="add button"
+                    className="absolute right-10 bottom-6"
+                  />
+            
           </div>
         </div>
         <div className="work-history flex flex-col gap-4 mb-14 pb-12">
@@ -117,39 +101,14 @@ const EditProfile = () => {
             <h3 className="text-white text-3xl w-full font-medium text-shadow-one">
               Work History
             </h3>
-            <button>
-              <Link to="/add-work">
-                <img src={AddButton} alt="add button" />
-              </Link>
-            </button>
-          </div>
-          <div className="experiences w-[110%] grid grid-cols-3 justify-between gap-y-8 ">
-            {filteredWorkData &&
-              filteredWorkData.map((experience, index) => (
-                <ExperienceCard
-                  key={index}
-                  dateFrom={experience.dateFrom}
-                  dateTo={experience.dateTo}
-                  role={experience.role}
-                  company={experience.company}
-                  address={experience.address}
-                />
-              ))}
-          </div>
-        </div>
-        <div className="projects-container flex flex-col">
-          <div className="my-projects flex flex-col gap-4 mb-24">
-            <div className="heading-wrapper w-full flex justify-between items-center pb-10">
-              <h3 className="text-white text-3xl font-medium text-shadow-one">
-                Projects
-              </h3>
-              <Link to="/upload-project">
-                <img src={AddButton} alt="add button" />
-              </Link>
-              {/* <Popup
+            <Popup
                 trigger={
                   <button>
-                    <img src={AddButton} alt="add button" />
+                    <img
+                      src={AddButton}
+                      alt="add button"
+                      
+                    />
                   </button>
                 }
               >
@@ -158,7 +117,40 @@ const EditProfile = () => {
                     <UploadProjectPopup closePopup={close} />
                   </div>
                 )}
-              </Popup> */}
+              </Popup>
+          </div>
+          <div className="experiences w-[110%] grid grid-cols-3 justify-between gap-y-8 ">
+            <ExperienceCard />
+            <ExperienceCard />
+            <ExperienceCard />
+            <ExperienceCard />
+            <ExperienceCard />
+            <ExperienceCard />
+          </div>
+        </div>
+        <div className="projects-container flex flex-col">
+          <div className="my-projects flex flex-col gap-4 mb-24">
+            <div className="heading-wrapper w-full flex justify-between items-center pb-10">
+              <h3 className="text-white text-3xl font-medium text-shadow-one">
+                Projects
+              </h3>
+              <Popup
+                trigger={
+                  <button>
+                    <img
+                      src={AddButton}
+                      alt="add button"
+                      
+                    />
+                  </button>
+                }
+              >
+                {(close) => (
+                  <div className="popup-container fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                    <UploadProjectPopup closePopup={close} />
+                  </div>
+                )}
+              </Popup>
             </div>
             <div className="projects-container grid grid-cols-4 gap-14">
               <ProjectCard />
@@ -180,12 +172,8 @@ const EditProfile = () => {
           </div>
         </div>
         <div className="cta-wrapper w-[40%] flex gap-8 mb-20">
-          <Link to="/profile">
-            <CTAButton title="Save" />
-          </Link>
-          <Link to="/profile">
-            <CTAButton title="Cancel" />
-          </Link>
+          <CTAButton title="Save" />
+          <CTAButton title="Cancel" />
         </div>
         <Footer />
       </MainLayout>
@@ -193,4 +181,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditProfileArchive;

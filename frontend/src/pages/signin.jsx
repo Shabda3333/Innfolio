@@ -9,8 +9,8 @@ import { useAuth } from "../context/AuthContext.jsx";
 
 const Signin = () => {
   const{login,user,logout} = useAuth();
-  // const {user}=useAuth()
-  // const userDetail=user || {}
+  // const {user}=useAuth()÷
+  const userDetail=user || {}
   
   // console.log(userDetail);
     const navigate = useNavigate();
@@ -58,6 +58,7 @@ const Signin = () => {
 
           handleSuccess(message);
           login(user)
+          setU
           setTimeout(() => {
             navigate("/explore");
           }, 1000);
@@ -122,7 +123,7 @@ const Signin = () => {
               </div>
             
             <div className="call-to-actions flex flex-col gap-4">
-              <button type = "submit">
+              <button type = "submit" className='pt-6'>
                 <LoginSignupButton title="Sign In" />
               </button>
               <p className="text-white font-regular">

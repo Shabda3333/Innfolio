@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TestImage from "../assets/test_image.jpg";
 import TestImage2 from "../assets/testimg2.jpg";
-
+import Image3 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg3.jpeg"
 
 const Project = () => {
   return (
@@ -13,7 +13,6 @@ const Project = () => {
       <div className="background-gradients z-10">
         <div className="first-gradient w-[62rem] h-[62rem] rotate-[78deg] absolute top-[-437px] left-[-517px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
         <div className="second-gradient w-[36rem] h-[36rem] rotate-[59.79deg] absolute top-[382px] right-[-382px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
-        {/* <div className="third-gradient w-[45rem] h-[45rem] rotate-[59.79deg] absolute top-[957px] left-[-692px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div> */}
       </div>
       <Navbar></Navbar>
       <MainLayout>
@@ -22,9 +21,13 @@ const Project = () => {
             <p className="text-white text-[2rem] text-shadow-one font-semibold">
               Project title goes here
             </p>
-            <p className="text-cyan text-[1 rem] text-shadow-one font-semibold">
-              View Project
-            </p>
+            <div className=" w-32">
+              <Link to="/project-details">
+                <p className="text-cyan text-[1 rem] font-semibold w-full">
+                  View Project
+                </p>
+              </Link>
+            </div>
           </div>
           <div className="flex justify-center bg-dark-grey rounded-2xl ">
             <div className="p-12">
@@ -44,7 +47,7 @@ const Project = () => {
               <p className="text-white text-base font-large">Swikriti Suwal</p>
             </div>
             <div className="stats flex justify-center items-center gap-2">
-            <span class="material-symbols-outlined text-white">favorite</span>
+              <span class="material-symbols-outlined text-white">favorite</span>
               <span class="material-symbols-outlined text-white">bookmark</span>
             </div>
           </div>

@@ -6,8 +6,11 @@ import SecondLayout from "../layouts/secondLayout.jsx";
 import LoginSignupButton from "../components/LoginSignupButton.jsx";
 import SignUpIllustration from "../assets/illustrations/sign_up_illustration.svg";
 import { useUserContext } from '../context/UserContext.jsx';
+import { useAuth } from "../context/AuthContext.jsx";
 
 const Signup = () => {
+  const{login,logout} = useAuth();
+
   const navigate = useNavigate();
   const {user, setUser}=useUserContext();
   const [inputValue, setInputValue] = useState({
@@ -48,6 +51,7 @@ const Signup = () => {
         handleSuccess(message);
         
         setUser(user);
+        login(user)
         setTimeout(() => {
           navigate("/account-setup");
         }, 1000);
@@ -134,7 +138,7 @@ const Signup = () => {
                   className="bg-[rgba(255,255,255,0.1)] border-[1px] border-[#8f8f8f] text-white px-10 py-3 rounded-full"
                 />
               </div> */}
-              <button type="submit">
+              <button type="submit" className='pt-6'>
                 <LoginSignupButton title="Sign Up" /> 
               </button>
             </form>
