@@ -48,42 +48,30 @@ const deleteProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
   try {
-    console.log(req.body);
-    const Project = new Project({
-      user_id: req.body.user_id,
+    const { user_id, title, introduction, role, skills, summary } = req.body;
+    const project = new Project({
+      user_id: user_id,
     });
-    // console.log("Request body:", req.body);
-    // console.log("Request files:", req.files);
 
-    // const project = await Project.findById(req.params.id);
+    // await Project.findById(req.params.id);
     // if (!project) {
+    //   console.log("no project");
     //   return res.status(404).json({ message: "Project not found" });
     // }
 
-    if (req.body.title != null) {
-      Project.title = req.body.title;
-    }
-    if (req.body.introduction != null) {
-      Project.introduction = req.body.introduction;
-    }
-    if (req.body.role != null) {
-      Project.role = req.body.role;
-    }
-    if (req.body.skills != null) {
-      Project.skills = req.body.skills;
-    }
-    if (req.body.summary != null) {
-      Project.summary = req.body.summary;
-    }
-    if (req.body.link != null) {
-      Project.link = req.body.link;
-    }
-    if (req.files) {
-      Project.photos = req.files.map((file) => file.filename);
-      Project.thumbnail = Project.photos.at(0);
+    if (title) project.title = title;
+    if (introduction) project.introduction = introduction;
+    if (role) project.role = role;
+    if (skills) project.skills = skills;
+    if (summary) project.summary = summary;
+    // if (link) project.link = link;
+
+    if (req.files && req.files.length > 0) {
+      project.photos = req.files.map((file) => file.filename);
+      project.thumbnail = project.photos[0];
     }
 
-    const updatedProject = await Project.save();
+    const updatedProject = await project.save();
     res.json(updatedProject);
   } catch (err) {
     res.status(400).json({ message: err.message });
