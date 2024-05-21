@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TestImage from "../assets/test_image.jpg";
 import TestImage2 from "../assets/testimg2.jpg";
-import Image3 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg3.jpeg"
+import Image3 from "../assets/imgg3.jpeg"
 
 const Project = () => {
   return (
