@@ -58,7 +58,7 @@ const Signin = () => {
 
           handleSuccess(message);
           login(user)
-          setU
+          
           setTimeout(() => {
             navigate("/explore");
           }, 1000);
