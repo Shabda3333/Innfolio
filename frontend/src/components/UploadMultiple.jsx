@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UploadPhotoIcon from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/upload_photo.svg";
+import UploadPhotoIcon from "../assets/upload_photo.svg";
 
 const UploadMutliple = () => {
   const [filePreviews, setFilePreviews] = useState([]);
