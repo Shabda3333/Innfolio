@@ -1,29 +1,62 @@
-// import React from 'react'
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import MainLayout from "../layouts/mainLayout.jsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TestImage from "../assets/test_image.jpg";
 import TestImage2 from "../assets/testimg2.jpg";
-import Image3 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg3.jpeg"
+import Image3 from "../assets/imgg3.jpeg";
 
 const Project = () => {
+  const { project_id } = useParams();
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  console.log(project_id);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        const response = await fetch(`http://localhost:3333/api/project/${project_id}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setProject(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, [project_id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="bg-black">
       <div className="background-gradients z-10">
         <div className="first-gradient w-[62rem] h-[62rem] rotate-[78deg] absolute top-[-437px] left-[-517px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
         <div className="second-gradient w-[36rem] h-[36rem] rotate-[59.79deg] absolute top-[382px] right-[-382px] bg-white rounded-full gradient-one z-10 blur-[150px] opacity-40"></div>
       </div>
-      <Navbar></Navbar>
+      <Navbar />
       <MainLayout>
         <div className="w-full flex flex-col gap-8 pb-40 px-60">
           <div className="flex flex-col gap-2">
             <p className="text-white text-[2rem] text-shadow-one font-semibold">
-              Project title goes here
+              {project.title}
             </p>
             <div className=" w-32">
-              <Link to="/project-details">
-                <p className="text-cyan text-[1 rem] font-semibold w-full">
+              <Link to={`/project-details/${project_id}`}>
+                <p className="text-cyan text-[1rem] font-semibold w-full">
                   View Project
                 </p>
               </Link>
@@ -33,8 +66,8 @@ const Project = () => {
             <div className="p-12">
               <img
                 className="image-container w-fit bg-cover overflow-hidden rounded-2xl"
-                src={TestImage2}
-                alt="test image"
+                src={`http://localhost:3333/Images/Users/${project.photos[0]}`} // Assuming you want to display the first photo as the main image
+                alt="project main image"
               />
             </div>
           </div>
@@ -42,13 +75,13 @@ const Project = () => {
           <div className="card-info flex justify-between items-center">
             <div className="name flex justify-center items-center gap-3">
               <div className="profile-picture w-7 h-7 bg-white rounded-full overflow-hidden">
-                <img src={TestImage} alt="test image" />
+                <img src={TestImage} alt="test image" /> {/* Use actual profile picture if available */}
               </div>
-              <p className="text-white text-base font-large">Swikriti Suwal</p>
+              <p className="text-white text-base font-large">{project.role}</p>
             </div>
             <div className="stats flex justify-center items-center gap-2">
-              <span class="material-symbols-outlined text-white">favorite</span>
-              <span class="material-symbols-outlined text-white">bookmark</span>
+              <span className="material-symbols-outlined text-white">favorite</span>
+              <span className="material-symbols-outlined text-white">bookmark</span>
             </div>
           </div>
         </div>

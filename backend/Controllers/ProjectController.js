@@ -23,11 +23,11 @@ const getAllProjects = async (req, res) => {
 
 const getSingleProject = async (req, res) => {
   try {
-    const Project = await Project.findById(req.params.id);
-    if (!Project) {
+    const project = await Project.findById(req.params.id);
+    if (!project) {
       return res.status(404).json({ message: "Project not found" });
     }
-    res.json(Project);
+    res.json(project);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -41,6 +41,7 @@ const deleteProject = async (req, res) => {
     if (!project) {
       return res.status(404).json({ error: "No such user" });
     }
+    return res.status(200).json({ message: "success" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

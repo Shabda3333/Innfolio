@@ -2,7 +2,8 @@
 import { ToastContainer, toast } from "react-toastify";import MainLayout from "../layouts/mainLayout.jsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ProjectCard from "../components/ProjectCard.jsx";
+import ProjectCard from "../components/UserProjectCard.jsx";
+
 
 
 import SearchBar from "../components/SearchBar.jsx";

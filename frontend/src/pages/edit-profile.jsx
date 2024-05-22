@@ -5,7 +5,8 @@ import MainLayout from "../layouts/mainLayout.jsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ExperienceCard from "../components/ExperienceCard.jsx";
-import ProjectCard from "../components/ProjectCardEditable.jsx";
+import ProjectCard from "../components/ProjectCard.jsx";
+
 import TestImage from "../assets/test_image.jpg";
 import CTAButton from "../components/LoginSignupButton.jsx";
 import AddButton from "../assets/add-filled.svg";
@@ -21,9 +22,15 @@ const EditProfile = () => {
   const userData = user || {};
 
   const [work, setWork] = useState([]);
+  const [project, setProject] = useState([]);
 
   const filteredWorkData = work.filter((w) => userData._id === w.user_id);
   console.log(filteredWorkData);
+
+  const filteredProjectData = project.filter((p) => userData._id=== p.user_id)
+  console.log(filteredProjectData);
+
+
 
   useEffect(() => {
     fetch("http://localhost:3333/api/work")
@@ -31,6 +38,14 @@ const EditProfile = () => {
       .then((data) => setWork(data))
       .catch((error) => console.error("Error fetching categories: ", error));
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3333/api/project")
+      .then((response) => response.json())
+      .then((data) => setProject(data))
+      .catch((error) => console.error("Error fetching categories: ", error));
+  }, []);
+
   return (
     <div className="bg-black">
       <Navbar></Navbar>
@@ -161,18 +176,16 @@ const EditProfile = () => {
               </Popup> */}
             </div>
             <div className="projects-container grid grid-cols-4 gap-14">
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
+            {filteredProjectData && filteredProjectData.map((project, index) => (
+            
+            <ProjectCard
+              key={index}
+              thumbnail={project.thumbnail}
+              user_id={project.user_id}
+              project_id={project._id}
+              
+            />
+          ))}
             </div>
             <div className="see-more-wrapper w-full flex justify-end">
               <p className="text-cyan font-medium">See More</p>

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import MainLayout from "../layouts/mainLayout.jsx";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
-import Image1 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg1.jpeg";
-import Image2 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg3.jpeg"
-import Image3 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg3.jpeg"
-import Image4 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg4.jpeg"
+import Image1 from "../assets/imgg1.jpeg";
+import Image2 from "../assets/imgg3.jpeg"
+import Image3 from "../assets/imgg3.jpeg"
+import Image4 from "../assets/imgg4.jpeg"
 import TestImage from "../assets/test_image.jpg";
 import TestImage2 from "../assets/testimg2.jpg";
 import SkillChip from "../components/SkillChip.jsx";

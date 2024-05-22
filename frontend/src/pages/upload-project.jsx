@@ -144,6 +144,7 @@ const UploadProject = () => {
                   </label>
                   <UploadMultiple onChange={handlePhotosChange} />
                 </div>
+                
                 <button type="submit" className="w-3/12 pt-6">
                   <ContinueButton title="Upload" />
                 </button>

@@ -14,6 +14,8 @@ import TestImage from "../assets/test_image.jpg";
 import { useUserContext } from "../context/UserContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useState, useEffect } from "react";
+import ProjectCard from "../components/ProjectCard.jsx";
+
 
 const Profile = () => {
   const { user } = useAuth();
@@ -21,9 +23,14 @@ const Profile = () => {
   const userData = user || {};
 
   const [work, setWork] = useState([]);
+  const [project, setProject] = useState([]);
   
+  const filteredProjectData = project.filter((p) => userData._id=== p.user_id)
+  console.log(filteredProjectData);
+
   const filteredWorkData = work.filter((w) => userData._id=== w.user_id)
   console.log(filteredWorkData);
+
 
   useEffect(() => {
     fetch("http://localhost:3333/api/work")
@@ -32,9 +39,16 @@ const Profile = () => {
       .catch((error) => console.error("Error fetching categories: ", error));
   }, []);
 
-  console.log(userData._id);
+  useEffect(() => {
+    fetch("http://localhost:3333/api/project")
+      .then((response) => response.json())
+      .then((data) => setProject(data))
+      .catch((error) => console.error("Error fetching categories: ", error));
+  }, []);
+
+  
   //   const {user}= useUserContext()
-  // console.log(user.username)
+  // console.log(project)
   return (
     <div className="bg-black">
       <div className="background-gradients z-10">
@@ -115,12 +129,16 @@ const Profile = () => {
             My <span className="text-gradient-one">Projects</span>
           </h3>
           <div className="projects-container grid grid-cols-4 gap-14">
-            <UserProjectCard />
-            <UserProjectCard />
-            <UserProjectCard />
-            <UserProjectCard />
-            <UserProjectCard />
+          {filteredProjectData && filteredProjectData.map((project, index) => (
             
+            <ProjectCard
+              key={index}
+              thumbnail={project.thumbnail}
+              user_id={project.user_id}
+              project_id={project._id}
+              
+            />
+          ))}
           </div>
         </div>
         <Footer />

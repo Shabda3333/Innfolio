@@ -7,20 +7,28 @@ const authRoute = require("./Routes/AuthRoute");
 const userRoute = require("./Routes/UserRoute");
 const workRoute = require("./Routes/WorkRoute");
 const projectRoute = require("./Routes/ProjectRoute");
-
+const path = require("path");
 
 //Express app
 const app = express();
 
-
 //Middlewares
 app.use(cookieParser());
 app.use(express.json());
+
 const corsOptions = {
   origin: "http://localhost:5173",
   credentials: true, // Allow credentials
 };
-app.use(cors(corsOptions)); //Uses CORS to allow cross-origin requests
+
+app.use(cors(corsOptions)); // Uses CORS to allow cross-origin requests
+
+// Log the static files path for debugging
+const staticFilesPath = path.join(__dirname, "Images/Users");
+console.log("Serving static files from:", staticFilesPath);
+
+app.use("/Images/Users/", express.static(staticFilesPath));
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
@@ -30,7 +38,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/work", workRoute);
-app.use("/api/project", projectRoute)
+app.use("/api/project", projectRoute);
 
 app.get("/", (req, res) => {
   console.log("Yes the server is working");

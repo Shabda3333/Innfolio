@@ -28,7 +28,7 @@ function App() {
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="project" element={<Project />} />
+        <Route path="project/:project_id" element={<Project />} />
         <Route path="project-details" element={<ProjectDetails />} />
         <Route path="explore" element={<Explore />} />
         <Route path="search" element={<Search />} />

@@ -1,6 +1,6 @@
 // import React from 'react'
 import TestImage from "../assets/test_image.jpg";
-import Image1 from "/Users/shabdashrestha/Downloads/project II/Innfolio/frontend/src/assets/imgg1.jpeg";
+import Image1 from "../assets/imgg1.jpeg";
 import Heart from "../assets/heart.svg";
 
 const UserProjectCard = () => {
